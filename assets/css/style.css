@@ -1,36 +1,33 @@
   /*icon styles*/
-.medium-8 {
-    border: 2px solid;
+.medium-12 {
+    border: 2px solid grey;
+    border-radius: 4px;
 }
 h1{
+  font-size: 30px;
+  
+}
+
+h2{
     font-size: 20px;
 }
 
-.medium-4 {
-    align-items: left;
+.input-Country {
+  height: 30px;
 }
 
-  .fi-social-facebook {
-    color: dodgerblue;
-    font-size: 2rem;
+.header {
+  background-color:#0f073a ;
+  color: white;
+  height: 80px;
   }
-  .fi-social-youtube {
-    color: red;
-    font-size: 2rem;
-  }
-  .fi-social-pinterest {
-    color: darkred;
-    font-size: 2rem;
-  }
-  i.fi-social-instagram {
-    color: brown;
-    font-size: 2rem;
-  }
-  i.fi-social-tumblr {
-    color: navy;
-    font-size: 2rem;
-  }
-  .fi-social-twitter {
-    color: skyblue;
-    font-size: 2rem;
-  }
+
+ /* .actual-map {
+    margin: 4px;
+    padding: 5px;
+    border: 2px solid gray;
+    border-radius: 4px;
+  }*/
+
+
+  
