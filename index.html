@@ -4,11 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Foundation | Welcome</title>
-    <!--<link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">-->
+    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
@@ -28,14 +26,30 @@
         <div class="row">
             <div class="medium-5 columns">
                 <h1>Search the country</h1>
-                <div class="input-group ml-10 mb-3">
-                    <input type="text" class="form-control" id="search-city" aria-label="City Search"
-                        aria-describedby="search-button">
-                    <div class="input-group-append">
-                        <button class=" btn bg-primary text-light" id="search-button"><i
-                                class="fa fa-search"></i></button>
-                    </div>
-                </div>
+                <form action="/action_page.php">
+                    <input list="browsers" name="browser">
+                    <datalist id="browsers">
+                      <option value="NC">
+                      <option value="SC">
+                                         
+                    </datalist>
+                    <input type="submit">
+                  </form>
+
+                <!-- <div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Dropdown</button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                </div> -->
             </div>
             <div class="medium-5 columns">
                 <h1>Pick the date</h1>
@@ -62,14 +76,15 @@
         <div class="row">
             <div class="medium-5 columns">
                 <h1>Search the city</h1>
-                <div class="input-group ml-10 mb-3">
-                    <input type="text" class="form-control" id="search-city" aria-label="City Search"
-                        aria-describedby="search-button">
-                    <div class="input-group-append">
-                        <button class=" btn bg-primary text-light" id="search-button"><i
-                                class="fa fa-search"></i></button>
-                    </div>
-                </div>
+                <form action="/action_page.php">
+                    <input list="browsers" name="browser">
+                    <datalist id="browsers">
+                      <option value="NC">
+                      <option value="SC">
+                                         
+                    </datalist>
+                    <input type="submit">
+                  </form>
             </div>
             <div class="medium-5 columns">
                 <h1>Pick the date</h1>
