@@ -10,81 +10,80 @@
 </head>
 
 <body>
- <!--Header-->
+    <!--Header-->
     <header class="header container-fluid mt-2 text-center p-2" style="background-color:#0f073a ;color: white;">
         <h1 class="display-3">Covid Correlation Console</h1>
     </header>
 
     <br>
 
-<!--Container to search coronavirus facts -->
-<div class="container">
+    <!--Container to search coronavirus facts -->
+    <div class="container">
 
-    <div class="Country">
-        <div class="row">
-            <div class="medium-5 columns">
-                <h2>Search the State</h2>
-                <form class="input-Country" action="/action_page.php">
-                    <input list="browsers" name="browser">
-                    <datalist id="browsers">
-                        <option value="NC">
-                        <option value="SC">
-                    </datalist>
-                    <input type="submit">
-                </form>
+        <div class="Country">
+            <div class="row">
+                <div class="medium-5 columns">
+                    <h2>Search the Country</h2>
+                    <form class="input-Country" action="/action_page.php">
+                        <input list="browsers" name="browser">
+                        <datalist id="browsers">
+                            <option value="NC">
+                            <option value="SC">
+                        </datalist>
+                        <input type="submit">
+                    </form>
+                </div>
+                <div class="medium-5 columns">
+                    <h2>Choose the date</h2>
+                    <input type="date" id="countryDate" value="">
+                </div>
+                <br>
+                <div class="medium-12 columns ">
+                    <p>Facts</p>
+                    <ul>
+                        <li>country name:</li>
+                        <li>number of deaths:</li>
+                        <li>number of sick:</li>
+                        <li>Stringency Index:</li>
+                    </ul>
+                </div>
             </div>
-            <div class="medium-5 columns">
-                <h2>Choose the date</h2>
-                <input type="date" id="myDate" value="">
+        </div>
+        <br>
+        <div class="Country">
+            <div class="row">
+                <div class="medium-5 columns">
+                    <h2>Search the State</h2>
+                    <form class="input-Country" action="/action_page.php">
+                        <input list="browsers" name="browser">
+                        <datalist id="browsers">
+                            <option value="NC">
+                            <option value="SC">
+                        </datalist>
+                        <input type="submit">
+                    </form>
+                </div>
+                <div class="medium-5 columns">
+                    <h2>Choose the date</h2>
+                    <input type="date" id="stateDate" value="">
+                </div>
+                <br>
+                <div class="medium-12 columns ">
+                    <p>Facts</p>
+                    <ul>
+                        <li>State name:</li>
+                        <li>Number of deaths:</li>
+                        <li>Number of sick:</li>
+                        <li>Stringency Index:</li>
+                    </ul>
+                </div>
             </div>
-            <br>
-            <div class="medium-12 columns ">
-                <p>Facts</p>
-                <ul>
-                    <li>country name:</li>
-                    <li>number of deaths:</li>
-                    <li>number of sick:</li>
-                    <li>Stringency Index:</li>
-                </ul>
-            </div>
-        </div>            
+        </div>
     </div>
     <br>
-    <div class="Country">
-        <div class="row">
-            <div class="medium-5 columns">
-                <h2>Search the City</h2>
-                <form class="input-Country" action="/action_page.php">
-                    <input list="browsers" name="browser">
-                    <datalist id="browsers">
-                        <option value="NC">
-                        <option value="SC">
-                    </datalist>
-                    <input type="submit">
-                </form>
-            </div>
-            <div class="medium-5 columns">
-                <h2>Choose the date</h2>
-                <input type="date" id="myDate" value="">
-            </div>
-            <br>
-            <div class="medium-12 columns ">
-                <p>Facts</p>
-                <ul>
-                    <li>country name:</li>
-                    <li>number of deaths:</li>
-                    <li>number of sick:</li>
-                    <li>Stringency Index:</li>
-                </ul>
-            </div>
-        </div>            
-    </div>
-</div>
- 
-    
-        <iframe src="https://ourworldindata.org/grapher/covid-stringency-index?year=2020-05-07"
-            style="width: 100%; height: 600px; border: 2px solid rounded;"></iframe>
-   
+
+    <iframe class="actual-map" src="https://ourworldindata.org/grapher/covid-stringency-index?year=2020-05-07"
+        style="width: 100%; height: 600px; border: 2px solid rounded;"></iframe>
 
     <hr>
 
@@ -94,6 +93,9 @@
 
     <hr>
 
+    <iframe title="vimeo-player" src="https://player.vimeo.com/video/463163595" width="640" height="360" frameborder="0"
+    allowfullscreen></iframe>
+
     <div class="row small-up-3 medium-up-4 large-up-5">
 
     </div>
@@ -101,15 +103,8 @@
 
 
 
-    <footer>
-
-        <div class="medium-6 columns">
-            <ul class="menu align-right">
-                <li class="menu-text">Copyright © 2099 Random Mag</li>
-            </ul>
-        </div>
-        </div>
-
+    <footer class="footer">   
+    <p class="footerP">Copyright © 2021 </p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
