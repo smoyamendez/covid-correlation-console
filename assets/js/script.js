@@ -1,4 +1,3 @@
-
 var cntryDateInput=$('#countryDate'); // var setting ---ON page load, connect searches and dates
 var stateDateInput=$('#browsers');
 var cntrySrchInput=$('#search-country');
