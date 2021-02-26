@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>COVID Correlation Console</title>
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
@@ -25,25 +26,22 @@
                 <div class="medium-5 columns">
                     <h2>Search the Country</h2>
                     <form class="input-Country" action="/action_page.php">
-                        <input id="ctrybrowser" list="ctrybrowsers" name="ctrybrowser" value="USA">
+                        <input id="search-Country" list="browsers" name="browser">
                         <datalist id="countryBrowsers">
-                            <option value="USA">
-                            <option value="FRA">
-                        </datalist>
-                        <input id="stateBrowser" list="browsers" name="browser">
-                        <datalist id="stateBrowsers">
                             <option value="NC">
                             <option value="SC">
                         </datalist>
+                        <input id="BtnCountry" type="submit">
                     </form>
                 </div>
                 <div class="medium-5 columns">
+
                     <h2>Choose the date</h2>
                     <input type="date" id="countryDate" value="">
                 </div>
                 <br>
-                <div class="medium-12 columns ">
-                    <p>Facts</p>
+                <div class="medium-4 columns ">
+                    <p>Facts</p>                   
                     <ul>
                         <li>country name:</li>
                         <li>number of deaths:</li>
@@ -69,16 +67,18 @@
                 </div>
                 <div class="medium-5 columns">
                     <h2>Choose the date</h2>
-                    <input type="date" id="stateDate" value="Range" min="2020-01-22" max="2021-02-25">
+                    <input type="date" id="stateDate" value="">
                 </div>
                 <br>
                 <div class="medium-12 columns ">
                     <p>Facts</p>
                     <ul>
-                        <li>State name:</li>
-                        <li>Number of deaths:</li>
-                        <li>Number of sick:</li>
-                        <li>Stringency Index:</li>
+                        <li>State name: </li>
+                        <li>Number of deaths: </li>
+                        <li>Positive cases: </li>
+                        <li>Hospitalized: </li>
+                        <li>ICU: </li>
+                        <li>Total Test: </li>                       
                     </ul>
                 </div>
             </div>
@@ -97,7 +97,7 @@
 
     <hr>
 
-    <iframe title="vimeo-player" src="https://player.vimeo.com/video/463163595" width="640" height="360" frameborder="0"
+    <iframe class="column" title="vimeo-player" src="https://player.vimeo.com/video/463163595" width="640" height="360" frameborder="0"
         allowfullscreen></iframe>
 
     <div class="row small-up-3 medium-up-4 large-up-5">
