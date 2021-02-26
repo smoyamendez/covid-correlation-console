@@ -26,11 +26,11 @@
                     <h2>Search the Country</h2>
                     <form class="input-Country" action="/action_page.php">
                         <input id="search-country" list="browsers" name="browser">
-                        <datalist id="browsers">
+                        <datalist id="countryBrowsers">
                             <option value="NC">
                             <option value="SC">
                         </datalist>
-                        <input type="submit">
+                        <input id="BtnCountry" type="submit">
                     </form>
                 </div>
                 <div class="medium-5 columns">
@@ -50,22 +50,22 @@
             </div>
         </div>
         <br>
-        <div class="Country">
+        <div class="State">
             <div class="row">
                 <div class="medium-5 columns">
                     <h2>Search the State</h2>
-                    <form class="input-Country" action="/action_page.php">
+                    <form class="input-State" action="/action_page.php">
                         <input id="search-state" list="browsers" name="browser">
-                        <datalist id="browsers">
+                        <datalist id="stateBrowsers">
                             <option value="NC">
                             <option value="SC">
                         </datalist>
-                        <input type="submit">
+                        <input id="BtnState" type="submit">
                     </form>
                 </div>
                 <div class="medium-5 columns">
                     <h2>Choose the date</h2>
-                    <input type="date" id="stateDate" value="">
+                    <input type="date" id="stateDate" value="Range" min="2020-01-22" max="2021-02-25">
                 </div>
                 <br>
                 <div class="medium-12 columns ">
