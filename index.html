@@ -1,40 +1,33 @@
 <!doctype html>
 <html class="no-js" lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>COVID Correlation Console</title>
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
-
 <body>
     <!--Header-->
-    <header class="header container-fluid mt-2 text-center p-2" style="background-color:#0f073a ;color: white;">
+    <header class="header container-fluid mt-2 text-center p-2" >
         <h1 class="display-3">Covid Correlation Console</h1>
+        <img class='img align-center'src="./gif.gif" alt="covid">
     </header>
-
-
     <div class="Instructions"></div>
     <!--Container to search coronavirus facts -->
     <div class="container">
-
         <div class="Country">
             <div class="row">
                 <div class="medium-5 columns">
                     <h2>Search the Country</h2>
                     <form class="input-Country" action="/action_page.php">
-                        <input id="ctrybrowser" list="ctrybrowsers" name="ctrybrowser" value="USA">
-                        <datalist id="countryBrowsers">
-                            <option value="USA">
-                            <option value="FRA">
-                        </datalist>
-                        <input id="stateBrowser" list="browsers" name="browser">
-                        <datalist id="stateBrowsers">
+                        <input id="search-Country" list="browsers" name="browser">
+                        <datalist id="countryBrowsers" value="USA">
                             <option value="NC">
                             <option value="SC">
                         </datalist>
+                        <input id="BtnCountry" type="submit">
                     </form>
                 </div>
                 <div class="medium-5 columns">
@@ -43,11 +36,11 @@
                 </div>
                 <br>
                 <div class="medium-12 columns ">
-                    <p>Facts</p>
+                    <p>Facts</p>                   
                     <ul>
-                        <li>country name:</li>
-                        <li>number of deaths:</li>
-                        <li>number of sick:</li>
+                        <li>Country name:</li>
+                        <li>Number of deaths:</li>
+                        <li>Number of sick:</li>
                         <li>Stringency Index:</li>
                     </ul>
                 </div>
@@ -58,9 +51,9 @@
             <div class="row">
                 <div class="medium-5 columns">
                     <h2>Search the State</h2>
-                    <form class="input-State" action="/action_page.php">
-                        <input id="search-state" list="browsers" name="browser">
-                        <datalist id="stateBrowsers">
+                    <form class="input-Country" action="/action_page.php">
+                        <input id="stbrowser" list="browsers" name="browser">
+                        <datalist id="browsers" value="NC">
                             <option value="NC">
                             <option value="SC">
                         </datalist>
@@ -69,48 +62,38 @@
                 </div>
                 <div class="medium-5 columns">
                     <h2>Choose the date</h2>
-                    <input type="date" id="stateDate" value="Range" min="2020-01-22" max="2021-02-25">
+                    <input type="date" id="stateDate" value="2020-12-3">
                 </div>
                 <br>
                 <div class="medium-12 columns ">
                     <p>Facts</p>
                     <ul>
-                        <li>State name:</li>
-                        <li>Number of deaths:</li>
-                        <li>Number of sick:</li>
-                        <li>Stringency Index:</li>
+                        <li>State name: </li>
+                        <li>Number of deaths: </li>
+                        <li>Positive cases: </li>
+                        <li>Hospitalized: </li>
+                        <li>ICU: </li>
+                        <li>Total Test: </li>                       
                     </ul>
                 </div>
             </div>
         </div>
     </div>
     <br>
-
     <iframe class="actual-map" src="https://ourworldindata.org/grapher/covid-stringency-index?year=2020-05-07"
         style="width: 100%; height: 600px; border: 2px solid rounded;"></iframe>
-
     <hr>
-
     <div class="row column">
         <h4 style="margin: 0;" class="text-center">BREAKING NEWS</h4>
     </div>
-
     <hr>
-
-    <iframe title="vimeo-player" src="https://player.vimeo.com/video/463163595" width="640" height="360" frameborder="0"
+    <iframe class="column" title="vimeo-player" src="https://player.vimeo.com/video/463163595" width="640" height="360" frameborder="0"
         allowfullscreen></iframe>
-
     <div class="row small-up-3 medium-up-4 large-up-5">
-
     </div>
-
-
-
-
     <footer class="footer">
         <p class="footerP">Copyright © 2021 </p>
     </footer>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
         integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
         crossorigin="anonymous"></script>
@@ -119,5 +102,4 @@
     <script src="assets/js/script.js"></script>
     </script>
 </body>
-
 </html>
