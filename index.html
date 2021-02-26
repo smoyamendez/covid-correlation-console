@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>COVID Correlation Console</title>
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
@@ -25,10 +26,10 @@
                 <div class="medium-5 columns">
                     <h2>Search the Country</h2>
                     <form class="input-Country" action="/action_page.php">
-                        <input id="ctrybrowser" list="ctrybrowsers" name="ctrybrowser" value="USA">
+                        <input id="search-Country" list="browsers" name="browser">
                         <datalist id="countryBrowsers">
-                            <option value="USA">
-                            <option value="FRA">
+                            <option value="NC">
+                            <option value="SC">
                         </datalist>
                         <input id="stateBrowser" list="browsers" name="browser">
                         <datalist id="stateBrowsers">
@@ -38,6 +39,7 @@
                     </form>
                 </div>
                 <div class="medium-5 columns">
+
                     <h2>Choose the date</h2>
                     <input type="date" id="countryDate" value="">
                 </div>
@@ -74,7 +76,7 @@
                 </div>
                 <div class="medium-5 columns">
                     <h2>Choose the date</h2>
-                    <input type="date" id="stateDate" value="Range" min="2020-01-22" max="2021-02-25">
+                    <input type="date" id="stateDate" value="">
                 </div>
                 <div class="row">
 
