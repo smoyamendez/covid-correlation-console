@@ -17,6 +17,7 @@
     </header>
 
 
+    <div class="Instructions"></div>
     <!--Container to search coronavirus facts -->
     <div class="container">
 
@@ -26,11 +27,10 @@
                     <h2>Search the Country</h2>
                     <form class="input-Country" action="/action_page.php">
                         <input id="ctrybrowser" list="ctrybrowsers" name="ctrybrowser" value="USA">
-                        <datalist id="browsers">
+                        <datalist id="countryBrowsers">
                             <option value="USA">
                             <option value="FRA">
                         </datalist>
-                        <input type="submit">
                     </form>
                 </div>
                 <div class="medium-5 columns">
@@ -50,7 +50,7 @@
             </div>
         </div>
         <br>
-        <div class="Country">
+        <div class="State">
             <div class="row">
                 <div class="medium-5 columns">
                     <h2>Search the State</h2>
@@ -60,12 +60,12 @@
                             <option value="NC">
                             <option value="SC">
                         </datalist>
-                        <input type="submit">
+                        <input id="BtnState" type="submit">
                     </form>
                 </div>
                 <div class="medium-5 columns">
                     <h2>Choose the date</h2>
-                    <input type="date" id="stateDate" value="">
+                    <input type="date" id="stateDate" value="Range" min="2020-01-22" max="2021-02-25">
                 </div>
                 <br>
                 <div class="medium-12 columns ">
@@ -94,7 +94,7 @@
     <hr>
 
     <iframe title="vimeo-player" src="https://player.vimeo.com/video/463163595" width="640" height="360" frameborder="0"
-    allowfullscreen></iframe>
+        allowfullscreen></iframe>
 
     <div class="row small-up-3 medium-up-4 large-up-5">
 
@@ -103,11 +103,13 @@
 
 
 
-    <footer class="footer">   
-    <p class="footerP">Copyright © 2021 </p>
+    <footer class="footer">
+        <p class="footerP">Copyright © 2021 </p>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
     <script src="assets/js/script.js"></script>
