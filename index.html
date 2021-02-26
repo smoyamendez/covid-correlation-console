@@ -11,11 +11,10 @@
 
 <body>
     <!--Header-->
-    <header class="header container-fluid mt-2 text-center p-2" >
+    <header class="header container-fluid mt-2 text-center p-2">
         <h1 class="display-3">Covid Correlation Console</h1>
-        <img class='img align-center'src="./gif.gif" alt="covid">
+        <img class="img align-center"src="./gif.gif" alt='covid'>
     </header>
-
 
     <div class="Instructions"></div>
     <!--Container to search coronavirus facts -->
@@ -31,14 +30,22 @@
                             <option value="USA">
                             <option value="FRA">
                         </datalist>
+                        <input id="stateBrowser" list="browsers" name="browser">
+                        <datalist id="stateBrowsers">
+                            <option value="NC">
+                            <option value="SC">
+                        </datalist>
                     </form>
                 </div>
                 <div class="medium-5 columns">
                     <h2>Choose the date</h2>
                     <input type="date" id="countryDate" value="">
                 </div>
-                <br>
-                <div class="medium-12 columns ">
+                <!-- <br> -->
+                <div class="row">
+
+                </div>
+                <div class="medium-4 columns ">
                     <p>Facts</p>
                     <ul>
                         <li>country name:</li>
@@ -47,6 +54,8 @@
                         <li>Stringency Index:</li>
                     </ul>
                 </div>
+                <div class="medium-4 columns "></div>
+                <div class="medium-4 columns "></div>
             </div>
         </div>
         <br>
@@ -54,9 +63,9 @@
             <div class="row">
                 <div class="medium-5 columns">
                     <h2>Search the State</h2>
-                    <form class="input-Country" action="/action_page.php">
-                        <input id="stbrowser" list="browsers" name="browser">
-                        <datalist id="browsers">
+                    <form class="input-State" action="/action_page.php">
+                        <input id="search-state" list="browsers" name="browser">
+                        <datalist id="stateBrowsers">
                             <option value="NC">
                             <option value="SC">
                         </datalist>
@@ -67,53 +76,58 @@
                     <h2>Choose the date</h2>
                     <input type="date" id="stateDate" value="Range" min="2020-01-22" max="2021-02-25">
                 </div>
-                <br>
-                <div class="medium-12 columns ">
-                    <p>Facts</p>
-                    <ul>
-                        <li>State name:</li>
-                        <li>Number of deaths:</li>
-                        <li>Number of sick:</li>
-                        <li>Stringency Index:</li>
-                    </ul>
+                <div class="row">
+
+                    <div class="medium-4 columns col-1">
+                        <p>Facts</p>
+                        <ul>
+                            <li>State name:</li>
+                            <li>Number of deaths:</li>
+                            <li>Number of sick:</li>
+                            <li>Stringency Index:</li>
+                        </ul>
+                    </div>
+                    <div class="medium-4 columns col-2 "></div>
+                    <div class="medium-4 columns col-3"></div>
                 </div>
+
+
             </div>
         </div>
-    </div>
-    <br>
+        <br>
 
-    <iframe class="actual-map" src="https://ourworldindata.org/grapher/covid-stringency-index?year=2020-05-07"
-        style="width: 100%; height: 600px; border: 2px solid rounded;"></iframe>
+        <iframe class="actual-map" src="https://ourworldindata.org/grapher/covid-stringency-index?year=2020-05-07"
+            style="width: 100%; height: 600px; border: 2px solid rounded;"></iframe>
 
-    <hr>
+        <hr>
 
-    <div class="row column">
-        <h4 style="margin: 0;" class="text-center">BREAKING NEWS</h4>
-    </div>
+        <div class="row column">
+            <h4 style="margin: 0;" class="text-center">BREAKING NEWS</h4>
+        </div>
 
-    <hr>
+        <hr>
 
-    <iframe title="vimeo-player" src="https://player.vimeo.com/video/463163595" width="640" height="360" frameborder="0"
-        allowfullscreen></iframe>
+        <iframe title="vimeo-player" src="https://player.vimeo.com/video/463163595" width="640" height="360"
+            frameborder="0" allowfullscreen></iframe>
 
-    <div class="row small-up-3 medium-up-4 large-up-5">
+        <div class="row small-up-3 medium-up-4 large-up-5">
 
-    </div>
-
+        </div>
 
 
 
-    <footer class="footer">
-        <p class="footerP">Copyright © 2021 </p>
-    </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
-        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
-        crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-    <script src="assets/js/script.js"></script>
-    </script>
+        <footer class="footer">
+            <p class="footerP">Copyright © 2021 </p>
+        </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+            integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+            crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+        <script src="assets/js/script.js"></script>
+        </script>
 </body>
 
 </html>
