@@ -1,5 +1,37 @@
   /*icon styles*/
-.medium-12 {
+.header {
+  margin:hide
+}
+.display-3{
+  /* background-image: linear-gradient(45deg, #f1f378, #15769c); */
+  font-size: 45px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  background-image:linear-gradient(#15769c, rgb(5, 17, 87)) ;
+  color: white;
+  margin: 10px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  opacity: 0.5;
+  
+  
+  
+}
+img {
+  
+}
+.container {
+  /* background-image: linear-gradient(45deg, #ffffff 50%, #1f458d); */
+  margin: 20px;
+  /* border: dimgray; */
+  border: solid 2px;
+  padding: 10px;
+}
+body {
+  background-image:linear-gradient(#15769c, rgb(5, 17, 87)) ;
+}
+
+  .medium-12 {
     border: 2px solid grey;
     border-radius: 4px;
 }
@@ -16,11 +48,7 @@ h2{
   height: 30px;
 }
 
-.header {
-  background-color:#0f073a ;
-  color: white;
-  height: 80px;
-  }
+
 
   .actual-map {
     margin: 4px;
@@ -30,7 +58,7 @@ h2{
   }
 
   .footer {
-  background-color:#0f073a ;
+  background-color:#15769c ;;
   color: white;
   height: 80px;
   text-align: center;
@@ -38,6 +66,7 @@ h2{
 
   .footerP{
     padding-top: 25px;
+    background-image: linear-gradient(45deg, #f1f378, #15769c);
   }
  
 
