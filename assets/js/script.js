@@ -1,23 +1,24 @@
 
 var cntryDateInput=$('#countryDate'); // var setting ---ON page load, connect searches and dates
-var stateDateInput=$('#stateDate');
+var stateDateInput=$('#browsers');
 var cntrySrchInput=$('#search-country');
 var stateSrchInput=$('#search-state');
 var initCntry='USA';
 var initState='NC';
-var currDateString=new Date();
+var currDateString=moment().format('MM/DD/yyyy');
 
-stateDateInput(currDateString); // var setting --date=current date, state North Carolina, country US
-cntryDateInput(currDateString);
-cntrySrchInput(initCntry);
-stateSrchInput(initState);
+var test=stateDateInput.attr('innerText');
+stateDateInput.attr('innerText',currDateString); // var setting --date=current date, state North Carolina, country US
+// cntryDateInput(currDateString);
+// cntrySrchInput(initCntry);
+// stateSrchInput(initState);
 
 var stateDemogphcUrlBase='https://api.census.gov/data/2019/acs/acs1?get='; // api variable setting demographic
 var stateDemogphcUrlquerys='NAME,B02001_002E,B02001_003E,B02001_004E,B02001_005E';
 var stateDemogphcUrlEnd='&for=state:' + initState;
-var stateDemograpcURLFinal=stateDemogphcUrlBase+stateDemogphcUrlquerys+stateDemogphcUrlEnd;
+var stateDemographcURLFinal=stateDemogphcUrlBase+stateDemogphcUrlquerys+stateDemogphcUrlEnd;
 
-pullDemogphc(stateDemograpcURLFinal); //update Demographics
+pullDemogphc(stateDemographcURLFinal); //update Demographics
 
 // var stateCoronaUrl;
 
