@@ -12,24 +12,24 @@
 
 <body>
     <!--Header-->
-    <header class="header container-fluid mt-2 text-center p-2" >
+    <header class="header container-fluid mt-2 text-center p-2">
         <h1 class="display-3">Covid Correlation Console</h1>
-        <img class='img align-center'src="./gif.gif" alt="covid">
+        <img class='img align-center' src="./gif.gif" alt="covid">
     </header>
-    
+
     <!--Instructions-->
     <div class="Instructions"></div>
 
     <!-- Container -->
     <div class="container">
-         <!-- Country -->
-         <div class="Country">
+        <!-- Country -->
+        <div class="Country">
             <div class="row">
                 <!-- Search -->
                 <div class="medium-5 columns">
                     <h2>Search the Country</h2>
                     <form class="input-Country" action="/action_page.php">
-                        <input id="search-Country" list="ctry-list" name="ctry"> 
+                        <input id="search-Country" list="ctry-list" name="ctry">
                         <datalist id="ctry-list">
                         </datalist>
                         <input id="BtnCountry" type="submit">
@@ -38,18 +38,27 @@
                 <!-- Date Selector -->
                 <div class="medium-5 columns">
                     <h2>Choose the date</h2>
-                    <input type="date" id="ctryDate" value="2020-12-31">
+                    <input type="date" id="ctryDate">
                 </div>
-                <br>
-                <!-- Facts -->
+                <!--Facts 1 -->
                 <div class="medium-12 columns ">
-                    <p>Facts</p>
-                    <ul>
-                        <li>country name:</li>
-                        <li>number of deaths:</li>
-                        <li>number of sick:</li>
-                        <li>Stringency Index:</li>                      
-                    </ul>
+                    <div class="medium-6 columns ctryFct-1">
+                        <ul>
+                            <li id='ctry-f-1'>Country name:</li>
+                            <li id='ctry-f-2'>Number of deaths:</li>
+                            <li id='ctry-f-3'>Number of sick:</li>
+                            <li id='ctry-f-4'>Stringency Index:</li>
+                        </ul>
+                    </div>
+                    <!--Facts 2 -->
+                    <div class="medium-6 columns ctryFct-1">
+                        <ul>
+                            <li id='ctry-f-5'>Example Fact 5</li>
+                            <li id='ctry-f-6'>Example Fact 6</li>
+                            <li id='ctry-f-7'>Example Fact 7</li>
+                            <li id='ctry-f-8'>Example Fact 8</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,24 +80,50 @@
                     <h2>Choose the date</h2>
                     <input type="date" id="stateDate">
                 </div>
-                <br>
+
                 <!-- Facts -->
                 <div class="medium-12 columns ">
-                    <p>Facts</p>
-                    <ul>
-                        <li>State name: </li>
-                        <li>Number of deaths: </li>
-                        <li>Positive cases: </li>
-                        <li>Hospitalized: </li>
-                        <li>ICU: </li>
-                        <li>Total Test: </li>                       
-                    </ul>
+                    <div class="medium-3 columns stateFct-1">
+                        <ul>
+                            <li id="st-f-1">State name: </li>
+                            <li id="st-f-2">Number of deaths: </li>
+                            <li id="st-f-3">Positive cases: </li>
+                            <li id="st-f-4">Hospitalized: </li>                            
+                        </ul>
+                    </div>
+                    <div class="medium-3 columns stateFct-1">
+                        <ul>
+                            <li id="st-f-5">ICU: </li>
+                            <li id="st-f-6">Total Test: </li>
+                            <li id="st-f-7">Example </li>
+                            <li id="st-f-8">Example </li>                           
+                        </ul>
+                    </div>
+                    <div class="medium-3 columns stateFct-1">
+                        <ul>
+                            <li id="st-f-9">Example: </li>
+                            <li id="st-f-10">Example: </li>
+                            <li id="st-f-11">Example: </li>
+                            <li id="st-f-12">Example: </li>
+                          
+                        </ul>
+                    </div>
+                    <div class="medium-3 columns stateFct-1">
+                        <ul>
+                            <li id="st-f-13">Example: </li>
+                            <li id="st-f-14">Example: </li>
+                            <li id="st-f-15">Example: </li>
+                            <li id="st-f-16">Example: </li>                          
+                        </ul>
+                    </div>
+                   
+                    
                 </div>
             </div>
         </div>
     </div>
-    <br>
 
+<!-- Map  -->
     <iframe class="actual-map" src="https://ourworldindata.org/grapher/covid-stringency-index?year=2020-05-07"
         style="width: 100%; height: 600px; border: 2px solid rounded;"></iframe>
 
@@ -100,8 +135,9 @@
 
     <hr>
 
-    <iframe class="column" title="vimeo-player" src="https://player.vimeo.com/video/463163595" width="640" height="360" frameborder="0"
-        allowfullscreen></iframe>
+<!-- Video -->
+    <iframe class="column" title="vimeo-player" src="https://player.vimeo.com/video/463163595" width="640" height="360"
+        frameborder="0" allowfullscreen></iframe>
 
     <div class="row small-up-3 medium-up-4 large-up-5">
 
