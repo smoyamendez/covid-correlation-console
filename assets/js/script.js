@@ -37,7 +37,7 @@ function pullDemogphc(url) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data)
+      // console.log(data)
     });
 }
 // Oxford fetch code
@@ -47,6 +47,7 @@ var oxfordUrlStart = 'https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/dat
 var oxfordFinalURL = oxfordUrlStart + oxfordDate + '/' + "2020-03-02";
 var ctryCode = 'AUS';
 var ctryIndex;
+
 function keepMatch(array, ctryCoding) {
   for (let i = 0; i < array.length; i++) {
     if (array[i] === ctryCoding) {
@@ -55,33 +56,51 @@ function keepMatch(array, ctryCoding) {
     }
   }
 };
+
 keepMatch(CtryArr, ctryCode);
-function pullOxford(url) {
-  fetch(url)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data); // sample delete
-      var firstFind = data['data'];
-      console.log(firstFind);
-      // const mySelf= Object.keys(firstFind)[0];
-      const mySelfValues = firstFind[Object.keys(firstFind)[0]];
-      const MyDayObj = (mySelfValues[ctryCode]);
-      var confirmedOx = MyDayObj['confirmed'];
-      var deathsOx = MyDayObj['deaths'];
-      var stringencyOx = MyDayObj['stringency'];
-      console.log(confirmedOx);
-      console.log(deathsOx);
-      console.log(stringencyOx);
-    });
-}
+
+
+
+// pullOxford(oxfordFinalURL);
+
+// function pullOxford(url) {
+//   fetch(url)
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       //console.log(data); // sample delete
+//       var firstFind = data['data'];
+//       //console.log(firstFind);
+//       // const mySelf= Object.keys(firstFind)[0];
+//       const mySelfValues = firstFind[Object.keys(firstFind)[0]];
+//       const MyDayObj = (mySelfValues[ctryCode]);
+//       var confirmedOx = MyDayObj['confirmed'];
+//       var deathsOx = MyDayObj['deaths'];
+//       var stringencyOx = MyDayObj['stringency'];
+//       //console.log(confirmedOx);
+//       //console.log(deathsOx);
+//       //console.log(stringencyOx);
+//     })}
+
 
 // *******************************ARE THERE WAYS TO SIMPLY THE ABOVE CODE*********************************
 // const found = firstFind.find(element => element.key = ctryCode);
 // var result = $.grep(myArray, function(e){ return e.id == id; });
 // Covid fetch code
-var covidApi = //‘https:api.covidtracking.com/v1/states/NC/daily.json’;
+// // Oxford fetch code
+
+
+// Covid fetch code
+
+var covidApiStart= 'https://api.covidtracking.com/v1/states/';
+var covidApiState= 'ca';
+var covidApiDate= '20200501';
+var covidApiEnd= '.json';
+var covidApiFinal= (covidApiStart + covidApiState + '/' + covidApiDate + covidApiEnd).toString;
+
+//https://api.covidtracking.com/v1/states/ca/20200501.json
+
   function pullCovid(url) {
     fetch(url)
       .then(function (response) {
@@ -91,56 +110,5 @@ var covidApi = //‘https:api.covidtracking.com/v1/states/NC/daily.json’;
         console.log(data)
       });
   }
-// Oxford fetch code
-//https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/2020-03-01/2020-03-15
-var oxfordDate = "2020-03-01";
-var oxfordUrlStart = 'https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/';
-var oxfordFinalURL = oxfordUrlStart + oxfordDate + '/' + "2020-03-02";
-var ctryCode = 'AUS';
-var ctryIndex;
-function keepMatch(array, ctryCoding) {
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] === ctryCoding) {
-      ctryIndex = i;
-      return;
-    }
-  }
-};
-keepMatch(CtryArr, ctryCode);
-function pullOxford(url) {
-  fetch(url)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data); // sample delete
-      var firstFind = data['data'];
-      console.log(firstFind);
-      // const mySelf= Object.keys(firstFind)[0];
-      const mySelfValues = firstFind[Object.keys(firstFind)[0]];
-      const MyDayObj = (mySelfValues[ctryCode]);
-      var confirmedOx = MyDayObj['confirmed'];
-      var deathsOx = MyDayObj['deaths'];
-      var stringencyOx = MyDayObj['stringency'];
-      console.log(confirmedOx);
-      console.log(deathsOx);
-      console.log(stringencyOx);
-    });
-}
-pullOxford(oxfordFinalURL);
-// *******************************ARE THERE WAYS TO SIMPLY THE ABOVE CODE*********************************
-// const found = firstFind.find(element => element.key = ctryCode);
-// var result = $.grep(myArray, function(e){ return e.id == id; });
-// ****************************************************************
 
-// Covid fetch code
-var covidApi = //‘https:api.covidtracking.com/v1/states/NC/daily.json’;
-  function pullCovid(url) {
-    fetch(url)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data)
-      });
-  }
+  pullCovid(covidApiFinal);
