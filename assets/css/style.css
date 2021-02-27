@@ -31,6 +31,11 @@ img {
   
   
 }
+
+ul {
+  border: 2px solid gray;
+  list-style-type: none ;
+}
 body {
   background-image:linear-gradient(#15769c, rgb(5, 17, 87)) ;
   box-shadow: inset 0px 0px 20px 10px rgb(56, 54, 54);
