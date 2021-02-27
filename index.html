@@ -16,67 +16,63 @@
         <h1 class="display-3">Covid Correlation Console</h1>
         <img class='img align-center'src="./gif.gif" alt="covid">
     </header>
-
-
+    
+    <!--Instructions-->
     <div class="Instructions"></div>
-    <!--Container to search coronavirus facts -->
+
+    <!-- Container -->
     <div class="container">
-        <!-- Container for Country -->
-        <div class="Country">
+         <!-- Country -->
+         <div class="Country">
             <div class="row">
+                <!-- Search -->
                 <div class="medium-5 columns">
-                    <!-- Country Search -->
                     <h2>Search the Country</h2>
                     <form class="input-Country" action="/action_page.php">
-                        <input id="search-Country" list="browsers" name="browser">
-                        <datalist id="countryBrowsers">
-                            <option value="USA">
-                            <option value="FRC">
+                        <input id="search-Country" list="ctry-list" name="ctry"> 
+                        <datalist id="ctry-list">
                         </datalist>
                         <input id="BtnCountry" type="submit">
                     </form>
                 </div>
-                <!-- Date Search -->
+                <!-- Date Selector -->
                 <div class="medium-5 columns">
                     <h2>Choose the date</h2>
-                    <input type="date" id="countryDate" value="">
+                    <input type="date" id="ctryDate" value="2020-12-31">
                 </div>
                 <br>
-                <!-- Facts Search -->
-                <div class="medium-4 columns ">
-                    <p>Facts</p>                   
+                <!-- Facts -->
+                <div class="medium-12 columns ">
+                    <p>Facts</p>
                     <ul>
                         <li>country name:</li>
                         <li>number of deaths:</li>
                         <li>number of sick:</li>
-                        <li>Stringency Index:</li>
+                        <li>Stringency Index:</li>                      
                     </ul>
                 </div>
             </div>
         </div>
-        <br>
-        <!-- Container for State -->
+        <!-- State -->
         <div class="State">
             <div class="row">
-                <!-- State Search -->
+                <!-- Search -->
                 <div class="medium-5 columns">
                     <h2>Search the State</h2>
                     <form class="input-Country" action="/action_page.php">
-                        <input id="stbrowser" list="browsers" name="browser">
-                        <datalist id="browsers">
-                            <option value="NC">
-                            <option value="SC">
+                        <input id="search-State" list="st-list" name="st">
+                        <datalist id="st-list">
                         </datalist>
                         <input id="BtnState" type="submit">
                     </form>
                 </div>
-                <!-- Date Search -->
+                <!-- Date Selector -->
                 <div class="medium-5 columns">
                     <h2>Choose the date</h2>
-                    <input type="date" id="stateDate" value="">
+                    <input type="date" id="stateDate">
                 </div>
                 <br>
-                <!-- Facts Search -->
+                <!-- Facts -->
                 <div class="medium-12 columns ">
                     <p>Facts</p>
                     <ul>
@@ -99,7 +95,7 @@
     <hr>
 
     <div class="row column">
-        <h4 style="margin: 0;" class="text-center">BREAKING NEWS</h4>
+        <h4 style="margin: 0;" class="text-center">RELATED MATERIALS</h4>
     </div>
 
     <hr>
@@ -110,8 +106,6 @@
     <div class="row small-up-3 medium-up-4 large-up-5">
 
     </div>
-
-
 
 
     <footer class="footer">

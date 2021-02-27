@@ -1,48 +1,47 @@
-var cntryDateInput=$('#countryDate'); // var setting ---ON page load, connect searches and dates
+var ctryList=$('#ctry-list'); // var setting ---ON page load, populate state/country codes and dates, identify inputs
+var statesList=$('#st-list');  
+var cntryDateInput=$('#ctryDate'); 
 var stateDateInput=$('#stateDate');
-var cntrySrchInput=$('#search-country');
-var stateBrowsers=$('#stateBrowsers');
-var stateSrchInput=$('#search-state');
+var cntrySrchInput=$('#search-Country');
+var stateSrchInput=$('#search-State');
+var ctryDate=cntryDateInput.attr('value');
+var stateDate=stateDateInput.attr('value');
 
-// var currDateString=moment().format('MM/DD/yyyy');
-
-// add Puerto RICO ETC?
+ // add Puerto RICO ETC? check states Array
 var StatesArr = ['AL','AK','AS','AZ','AR','CA','CO','CT','DE','DC','FM','FL','GA','GU','HI','ID','IL','IN','IA','KS','KY','LA','ME','MH','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','MP','OH','OK','OR','PW','PA','PR','RI','SC','SD','TN','TX','UT','VT','VI','VA','WA','WV','WI','WY'];
+var CtryArr = ['USA','FRA'];
 
- stateBrowsers.append('<option value="XX">')
+//build array function
+function populateList(array,list){
+$.each(array, function(i) {list.append($("<option>").attr('value', array[i]));})};
 
-// for (i=0;i<StatesArr.length; i++){
-  
-// }
+//fill lists of states and countries
+populateList(StatesArr,statesList);
+populateList(CtryArr,ctryList);
 
-// var test=stateDateInput.attr('innerText');
-// stateDateInput.attr('value',currDateString); // var setting --date=current date, state North Carolina, country US
 
-// // cntryDateInput(currDateString);
-// // cntrySrchInput(initCntry);
-// // stateSrchInput(initState);
+var stateDemogphcUrlBase='https://api.census.gov/data/2019/acs/acs1?get='; // api variable setting demographic
+var stateDemogphcUrlquerys='NAME,B02001_002E,B02001_003E,B02001_004E,B02001_005E';
+var stateDemogphcUrlEnd='&for=state:*';
+var stateDemographcURLFinal='https://api.census.gov/data/2019/acs/acs1?get=NAME,B02001_002E,B02001_003E,B02001_004E,B02001_005E&for=state:17';   //stateDemogphcUrlBase+stateDemogphcUrlquerys+stateDemogphcUrlEnd;
 
-// var stateDemogphcUrlBase='https://api.census.gov/data/2019/acs/acs1?get='; // api variable setting demographic
-// var stateDemogphcUrlquerys='NAME,B02001_002E,B02001_003E,B02001_004E,B02001_005E';
-// var stateDemogphcUrlEnd='&for=state:NC';
-// var stateDemographcURLFinal=stateDemogphcUrlBase+stateDemogphcUrlquerys+stateDemogphcUrlEnd;
-
-// pullDemogphc(stateDemographcURLFinal); //update Demographics
+pullDemogphc(stateDemographcURLFinal); //update Demographics
+    //["NAME", "B02001_002E", "B02001_003E", "B02001_004E", "B02001_005E", "state"]
 
 // // var stateCoronaUrl;
 
 
 // //standard fetch code
 
-// function pullDemogphc(url) {
-//     fetch(url)
-// .then(function (response) {
-//   return response.json();
-// })
-// .then(function (data) {
-//   console.log(data)
-// });
-// }
+function pullDemogphc(url) {
+    fetch(url)
+.then(function (response) {
+  return response.json();
+})
+.then(function (data) {
+  console.log(data)
+});
+}
 
 // // var ctrybrowser=$('#ctrybrowser');
 // // var ctrybrowser=$('#ctrybrowser');
