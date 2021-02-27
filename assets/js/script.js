@@ -8,6 +8,7 @@ var ctryDate = cntryDateInput.attr('value');
 var stateDate = stateDateInput.attr('value');
 var StatesArr = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY'];
 var CtryArr = ['ABW', 'AFG', 'AGO', 'ALB', 'AND', 'ARE', 'ARG', 'AUS', 'AUT', 'AZE', 'BDI', 'BEL', 'BEN', 'BFA', 'BGD', 'BGR', 'BHR', 'BHS', 'BIH', 'BLR', 'BLZ', 'BMU', 'BOL', 'BRA', 'BRB', 'BRN', 'BTN', 'BWA', 'CAF', 'CAN', 'CHE', 'CHL', 'CHN', 'CIV', 'CMR', 'COD', 'COG', 'COL', 'CPV', 'CRI', 'CUB', 'CYP', 'CZE', 'DEU', 'DJI', 'DMA', 'DNK', 'DOM', 'DZA', 'ECU', 'EGY', 'ERI', 'ESP', 'EST', 'ETH', 'FIN', 'FJI', 'FRA', 'FRO', 'GAB', 'GBR', 'GEO', 'GHA', 'GIN', 'GMB', 'GRC', 'GRL', 'GTM', 'GUM', 'GUY', 'HKG', 'HND', 'HRV', 'HTI', 'HUN', 'IDN', 'IND', 'IRL', 'IRN', 'IRQ', 'ISL', 'ISR', 'ITA', 'JAM', 'JOR', 'JPN', 'KAZ', 'KEN', 'KGZ', 'KHM', 'KIR', 'KOR', 'KWT', 'LAO', 'LBN', 'LBR', 'LBY', 'LKA', 'LSO', 'LTU', 'LUX', 'LVA', 'MAC', 'MAR', 'MCO', 'MDA', 'MDG', 'MEX', 'MLI', 'MLT', 'MMR', 'MNG', 'MOZ', 'MRT', 'MUS', 'MWI', 'MYS', 'NAM', 'NER', 'NGA', 'NIC', 'NLD', 'NOR', 'NPL', 'NZL', 'OMN', 'PAK', 'PAN', 'PER', 'PHL', 'PNG', 'POL', 'PRI', 'PRT', 'PRY', 'PSE', 'QAT', 'RKS', 'ROU', 'RUS', 'RWA', 'SAU', 'SDN', 'SEN', 'SGP', 'SLB', 'SLE', 'SLV', 'SMR', 'SOM', 'SRB', 'SSD', 'SUR', 'SVK', 'SVN', 'SWE', 'SWZ', 'SYC', 'SYR', 'TCD', 'TGO', 'THA', 'TJK', 'TKM', 'TLS', 'TON', 'TTO', 'TUN', 'TUR', 'TWN', 'TZA', 'UGA', 'UKR', 'URY', 'USA', 'UZB', 'VEN', 'VIR', 'VNM', 'VUT', 'YEM', 'ZAF', 'ZMB', 'ZWE'];
+var confirmedCases = $('#st-f-1'); var totalDeathsEl= $('#st-f-2'); var currentlyHospitalized = $('#st-f-3'); var currentlyICU = $('#st-f-4'); 
 //build array function
 function populateList(array, list) {
   $.each(array, function (i) { list.append($("<option>").attr('value', array[i])); })
@@ -28,7 +29,7 @@ pullDemogphc(stateDemographcURLFinal); //update Demographics
 
 //add listeners
 $('#BtnState').click(pullDemogphc(stateDemographcURLFinal));
-$('#BtnCountry').click(pullOxford(oxfordFinalURL));
+// $('#BtnCountry').click(pullOxford(oxfordFinalURL));
 
 // Demographics fetch code
 function pullDemogphc(url) {
@@ -93,11 +94,11 @@ keepMatch(CtryArr, ctryCode);
 
 // Covid fetch code
 
-var covidApiStart= 'https://api.covidtracking.com/v1/states/';
+var covidApiStart= 'https://api.covidtracking.com/v2/states/';
 var covidApiState= 'ca';
-var covidApiDate= '20200501';
-var covidApiEnd= '.json';
-var covidApiFinal= (covidApiStart + covidApiState + '/' + covidApiDate + covidApiEnd).toString;
+var covidApiDate= '2020-05-10';
+var covidApiEnd= 'simple.json';
+var covidApiFinal= covidApiStart + covidApiState + '/' + covidApiDate + '/' + covidApiEnd;
 
 //https://api.covidtracking.com/v1/states/ca/20200501.json
 
@@ -107,8 +108,20 @@ var covidApiFinal= (covidApiStart + covidApiState + '/' + covidApiDate + covidAp
         return response.json();
       })
       .then(function (data) {
-        console.log(data)
+        // console.log(data);
+
+        var currentICU = ((((data.data).outcomes).hospitalized).in_icu).currently; // Start set variables from COVID API data
+        var casesConfirmed = ((data.data).cases).confirmed;
+        var totalDeaths = (((data.data).outcomes).death).total;
+        var currentHospitalized = (((data.data).outcomes).hospitalized).currently;
+
+        confirmedCases.text('Confimed Cases: ' + casesConfirmed); // Start send to HTML Fact List
+        totalDeathsEl.text('Total Deaths: ' + totalDeaths);
+        currentlyHospitalized.text('Currently Hospitalized: ' + currentHospitalized);
+        currentlyICU.text('Currently in ICU: ' + currentICU); 
       });
   }
+
+
 
   pullCovid(covidApiFinal);
