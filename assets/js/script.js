@@ -4,6 +4,7 @@ var cntryDateInput = $('#ctryDate');
 var stateDateInput = $('#stateDate');
 var cntrySrchInput = $('#search-Country');
 var stateSrchInput = $('#search-State');
+var datePickers = $('.dateSel')  // write validation code here - use modals instead of alerts and confirms to have validation messages
 var ctryDate = cntryDateInput.attr('value');
 var stateDate = stateDateInput.attr('value');
 var StatesArr = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY'];
@@ -13,6 +14,7 @@ var confirmedCases = $('#st-f-1'); var totalDeathsEl= $('#st-f-2'); var currentl
 function populateList(array, list) {
   $.each(array, function (i) { list.append($("<option>").attr('value', array[i])); })
 };
+
 //fill lists of states and countries
 populateList(StatesArr, statesList);
 populateList(CtryArr, ctryList);
@@ -23,32 +25,44 @@ var stateDemographcURLFinal = 'https://api.census.gov/data/2019/acs/acs1?get=NAM
 function populateList(array, list) {
   $.each(array, function (i) { list.append($("<option>").attr('value', array[i])); })
 };
-pullDemogphc(stateDemographcURLFinal); //update Demographics
+
+//update Demographics
+pullDemogphc(stateDemographcURLFinal); 
 //["NAME", "B02001_002E", "B02001_003E", "B02001_004E", "B02001_005E", "state"]
 // // var stateCoronaUrl;
 
 //add listeners
-$('#BtnState').click(pullDemogphc(stateDemographcURLFinal));
-// $('#BtnCountry').click(pullOxford(oxfordFinalURL));
+
+$('#BtnState').click(pullDemogphc(stateDemographcURLFinal));  /// **********ADD pullCovid(covidApiFinal)  FUNCTION
+
+//determine today's date and use in validations
+var todayDate=moment().format('yyyy-MM-DD');
+
+
+
+// var validateDate(dateValue) = ()stateDateInput
+
+
 
 // Demographics fetch code
 function pullDemogphc(url) {
+  // if validateDate=
   fetch(url)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      // console.log(data)
+      console.log(data)
     });
 }
+
 // Oxford fetch code
 //https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/2020-03-01/2020-03-15
 var oxfordDate = "2020-03-01";
 var oxfordUrlStart = 'https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/';
-var oxfordFinalURL = oxfordUrlStart + oxfordDate + '/' + "2020-03-02";
+var oxfordFinalURL = oxfordUrlStart + oxfordDate + '/' + "2020-03-01";
 var ctryCode = 'AUS';
 var ctryIndex;
-
 function keepMatch(array, ctryCoding) {
   for (let i = 0; i < array.length; i++) {
     if (array[i] === ctryCoding) {
@@ -57,42 +71,37 @@ function keepMatch(array, ctryCoding) {
     }
   }
 };
-
 keepMatch(CtryArr, ctryCode);
 
 
+pullOxford(oxfordFinalURL);
 
-// pullOxford(oxfordFinalURL);
+function pullOxford(url) {
+  fetch(url)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
 
-// function pullOxford(url) {
-//   fetch(url)
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (data) {
-//       //console.log(data); // sample delete
-//       var firstFind = data['data'];
-//       //console.log(firstFind);
-//       // const mySelf= Object.keys(firstFind)[0];
-//       const mySelfValues = firstFind[Object.keys(firstFind)[0]];
-//       const MyDayObj = (mySelfValues[ctryCode]);
-//       var confirmedOx = MyDayObj['confirmed'];
-//       var deathsOx = MyDayObj['deaths'];
-//       var stringencyOx = MyDayObj['stringency'];
-//       //console.log(confirmedOx);
-//       //console.log(deathsOx);
-//       //console.log(stringencyOx);
-//     })}
+      var dateData=((data['data'])[oxfordDate])[ctryCode];
 
+      var confirmedOx=dateData.confirmed;
+      var deathsOx=dateData.deaths;
+      var stringencyOx=dateData.stringency;
 
+      console.log(confirmedOx);
+    });
+  }
+
+      
 // *******************************ARE THERE WAYS TO SIMPLY THE ABOVE CODE*********************************
 // const found = firstFind.find(element => element.key = ctryCode);
 // var result = $.grep(myArray, function(e){ return e.id == id; });
-// Covid fetch code
-// // Oxford fetch code
 
 
 // Covid fetch code
+
+//  https://api.covidtracking.com/v2/states/ca/2021-01-10/simple.json
 
 var covidApiStart= 'https://api.covidtracking.com/v2/states/';
 var covidApiState= 'ca';
@@ -100,7 +109,7 @@ var covidApiDate= '2020-05-10';
 var covidApiEnd= 'simple.json';
 var covidApiFinal= covidApiStart + covidApiState + '/' + covidApiDate + '/' + covidApiEnd;
 
-//https://api.covidtracking.com/v1/states/ca/20200501.json
+pullCovid(covidApiFinal);
 
   function pullCovid(url) {
     fetch(url)
@@ -120,8 +129,4 @@ var covidApiFinal= covidApiStart + covidApiState + '/' + covidApiDate + '/' + co
         currentlyHospitalized.text('Currently Hospitalized: ' + currentHospitalized);
         currentlyICU.text('Currently in ICU: ' + currentICU); 
       });
-  }
-
-
-
-  pullCovid(covidApiFinal);
+  };
