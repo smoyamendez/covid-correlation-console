@@ -88,29 +88,29 @@ validateDate(todayDate);
 // const found = firstFind.find(element => element.key = ctryCode);
 // var result = $.grep(myArray, function(e){ return e.id == id; });
 // Covid Fetch Code
-// var covidApiStart= 'https://api.covidtracking.com/v2/states/'; //Assemble Variables, Full URL https://api.covidtracking.com/v2/states/ca/2021-01-10/simple.json
-// var covidApiState= 'ca';
-// var covidApiDate= '2020-05-10';
-// var covidApiEnd= 'simple.json';
-// var covidApiFinal= covidApiStart + covidApiState + '/' + covidApiDate + '/' + covidApiEnd; 
-//   function pullCovid(url) {      // BEGIN FETCH
-//     fetch(url)
-//       .then(function (response) {
-//         return response.json();
-//       })
-//       .then(function (data) {
-//         // console.log(data);
-//         var currentICU = ((((data.data).outcomes).hospitalized).in_icu).currently; // Start set variables from COVID API data
-//         var casesConfirmed = ((data.data).cases).confirmed;
-//         var totalDeaths = (((data.data).outcomes).death).total;
-//         var currentHospitalized = (((data.data).outcomes).hospitalized).currently;
-//         confirmedCases.text('Confimed Cases: ' + casesConfirmed); // Start send to HTML Fact List
-//         totalDeathsEl.text('Total Deaths: ' + totalDeaths);
-//         currentlyHospitalized.text('Currently Hospitalized: ' + currentHospitalized);
-//         currentlyICU.text('Currently in ICU: ' + currentICU);
-//         pullDemogphc(stateDemographcURLFinal); 
-//       });
-//   };
+var covidApiStart= 'https://api.covidtracking.com/v2/states/'; //Assemble Variables, Full URL https://api.covidtracking.com/v2/states/ca/2021-01-10/simple.json
+var covidApiState= 'ca';
+var covidApiDate= '2020-05-10';
+var covidApiEnd= 'simple.json';
+var covidApiFinal= covidApiStart + covidApiState + '/' + covidApiDate + '/' + covidApiEnd; 
+  function pullCovid(url) {      // BEGIN FETCH
+    fetch(url)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        // console.log(data);
+        var currentICU = ((((data.data).outcomes).hospitalized).in_icu).currently; // Start set variables from COVID API data
+        var casesConfirmed = ((data.data).cases).confirmed;
+        var totalDeaths = (((data.data).outcomes).death).total;
+        var currentHospitalized = (((data.data).outcomes).hospitalized).currently;
+        confirmedCases.text('Confimed Cases: ' + casesConfirmed); // Start send to HTML Fact List
+        totalDeathsEl.text('Total Deaths: ' + totalDeaths);
+        currentlyHospitalized.text('Currently Hospitalized: ' + currentHospitalized);
+        currentlyICU.text('Currently in ICU: ' + currentICU);
+        pullDemogphc(stateDemographcURLFinal); 
+      });
+  };
   //add listeners
   $('#BtnCountry').click(pullOxford(oxfordFinalURL));
   $('#BtnState').click(pullCovid(covidApiFinal));

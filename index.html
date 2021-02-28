@@ -36,9 +36,9 @@
                     </form>
                 </div>
                 <!-- Date Selector -->
-                <div class="medium-5 columns">
+                <div class="medium-5 columns dateSel">
                     <h2>Choose the date</h2>
-                    <input type="date" id="ctryDate">
+                    <input type="date" id="ctryDate" max="2021-01-25">
                 </div>
                 <!--Facts 1 -->
                 <div class="medium-12 columns ">
@@ -76,10 +76,47 @@
                     </form>
                 </div>
                 <!-- Date Selector -->
-                <div class="medium-5 columns">
+                <div class="medium-5 columns dateSel">
                     <h2>Choose the date</h2>
                     <input type="date" id="stateDate">
                 </div>
+                <!-- *************************************************************************************************************** -->
+                
+                <div class="button-group align-center">
+                    <button href="#" class="button" data-open="mobile-ios-modal-2"><i class="fa fa-warning"></i> Alert</button>
+                  </div>
+
+
+                <!-- <div class="reveal mobile-ios-modal" id="mobile-ios-modal" data-reveal>
+                    <div class="mobile-ios-modal-inner">
+                      <p>Number of Yetis</p>
+                      <input type="number">
+                    </div> -->
+                  
+                    <div class="mobile-ios-modal-options">
+                      <button class="button">Ok</button>
+                    </div>
+                  
+                        <div class="reveal mobile-ios-modal" id="mobile-ios-modal-2" data-reveal>
+                    <div class="mobile-ios-modal-inner">
+                      <p>Your password does not match our records. Please re-enter your password.</p>
+                    </div>
+                
+                
+                
+                
+                        <!-- Trigger/Open The Modal -->
+                        <button id="myBtn">Open Modal</button>
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <p>Some text in the Modal..</p>
+                            </div>
+                        </div>
+                         <!-- ***************************************************************************************************************-->
+
 
                 <!-- Facts -->
                 <div class="medium-12 columns ">
@@ -88,7 +125,7 @@
                             <li id="st-f-1">State name: </li>
                             <li id="st-f-2">Number of deaths: </li>
                             <li id="st-f-3">Positive cases: </li>
-                            <li id="st-f-4">Hospitalized: </li>                            
+                            <li id="st-f-4">Hospitalized: </li>
                         </ul>
                     </div>
                     <div class="medium-3 columns stateFct-1">
@@ -96,7 +133,7 @@
                             <li id="st-f-5">ICU: </li>
                             <li id="st-f-6">Total Test: </li>
                             <li id="st-f-7">Example </li>
-                            <li id="st-f-8">Example </li>                           
+                            <li id="st-f-8">Example </li>
                         </ul>
                     </div>
                     <div class="medium-3 columns stateFct-1">
@@ -105,7 +142,7 @@
                             <li id="st-f-10">Example: </li>
                             <li id="st-f-11">Example: </li>
                             <li id="st-f-12">Example: </li>
-                          
+
                         </ul>
                     </div>
                     <div class="medium-3 columns stateFct-1">
@@ -113,20 +150,21 @@
                             <li id="st-f-13">Example: </li>
                             <li id="st-f-14">Example: </li>
                             <li id="st-f-15">Example: </li>
-                            <li id="st-f-16">Example: </li>                          
+                            <li id="st-f-16">Example: </li>
                         </ul>
                     </div>
-                   
-                    
+
+
                 </div>
             </div>
         </div>
     </div>
 
-<!-- Map  -->
-    <iframe class="actual-map" src="https://ourworldindata.org/grapher/covid-stringency-index?year=2020-05-07"
-        style="width: 100%; height: 600px; border: 2px solid rounded;"></iframe>
-
+    <!-- Map  -->
+    <div class="row">
+        <iframe class="actual-map" src="https://ourworldindata.org/grapher/covid-stringency-index?year=2020-05-07"
+            style="width: 100%; height: 600px; border: 2px solid rounded; "></iframe>
+    </div>
     <hr>
 
     <div class="row column">
@@ -135,11 +173,13 @@
 
     <hr>
 
-<!-- Video -->
-    <iframe class="column" title="vimeo-player" src="https://player.vimeo.com/video/463163595" width="640" height="360"
-        frameborder="0" allowfullscreen></iframe>
+    <!-- Video -->
+    <div class="row">
+        <iframe class="column" title="vimeo-player" src="https://player.vimeo.com/video/463163595" width="640"
+            height="360" frameborder="0" allowfullscreen></iframe>
+    </div>
 
-    <div class="row small-up-3 medium-up-4 large-up-5">
+    <div class="row small-up-3 medium-up-4 large-up-5"></div>
 
     </div>
 
