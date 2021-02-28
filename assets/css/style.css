@@ -1,7 +1,5 @@
-  /*icon styles*/
-.header {
-  /* margin:hide; */
-}
+   /*icon styles*/
+
 .display-3{
   /* background-image: linear-gradient(45deg, #f1f378, #15769c); */
   font-size: 45px;
@@ -16,9 +14,6 @@
   box-shadow: inset 0px 0px 10px 20px #000;
   
   
-  
-}
-img {
   
 }
 .container {
@@ -85,9 +80,7 @@ ul {
   border-radius: 10px;
   text-align: left;
 }
-li {
-  
-}
+
 h2 {
   font-size: 15px;
   background-image: radial-gradient(#157094, #51534e 200px);
@@ -109,17 +102,7 @@ body {
  
 
 
-.input-Country {
-  /* height: 30px; */
-}
 
-
-
-  .actual-map {
-    
-   
-    
-  }
 
   .footer {
   /* background-color:#15769c ;; */
@@ -131,5 +114,65 @@ body {
   
  
 
-
+  .mobile-ios-modal {
+    width: 226px;
+    min-height: 160px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border-radius: 0.75rem;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+  
+  .mobile-ios-modal-inner {
+    padding: 0.5rem 0.5rem 1.5rem;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: center;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  
+  .mobile-ios-modal-options {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  
+  .mobile-ios-modal-options .button {
+    -webkit-flex: 1 0 0;
+        -ms-flex: 1 0 0px;
+            flex: 1 0 0;
+    margin-bottom: 0;
+    color: #1779ba;
+    background: transparent;
+    border-color: #e6e6e6;
+    border-bottom: 0;
+  }
+  
+  .mobile-ios-modal-options-stacked .button {
+    display: block;
+    width: 100%;
+    -webkit-flex: 1 0 0;
+        -ms-flex: 1 0 0px;
+            flex: 1 0 0;
+    margin-bottom: 0;
+    color: #1779ba;
+    background: transparent;
+    border-color: #e6e6e6;
+    border-bottom: 0;
+  }
+  
   

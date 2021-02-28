@@ -14,6 +14,13 @@
     <!--Header-->
     <header class="header container-fluid mt-2 text-center p-2">
         <h1 class="display-3">Covid Correlation Console</h1>
+        <nav>
+            <ul>
+                <li><a href="#CountrySelect">International Stats</a></li>
+                <li><a href="#StateSelect">US States Stats</a></li>
+                <li><a href="#materials">Related materials</a></li>
+            </ul>
+        </nav>
         <img class='img align-center' src="./gif.gif" alt="covid">
     </header>
 
@@ -23,8 +30,13 @@
     <!-- Container -->
     <div class="container">
         <!-- Country -->
-        <div class="Country">
+        <div class="Country" id="CountrySelect">
             <div class="row">
+                <!-- Date Selector -->
+                <div class="medium-5 columns dateSel">
+                    <h2>Select date</h2>
+                    <input type="date" id="ctryDate">
+                </div>
                 <!-- Search -->
                 <div class="medium-6 columns">
                     <h2>Search the Country</h2>
@@ -63,8 +75,13 @@
             </div>
         </div>
         <!-- State -->
-        <div class="State">
+        <div class="State" id="StateSelect">
             <div class="row">
+                 <!-- Date Selector -->
+                 <div class="medium-5 columns dateSel">
+                    <h2>Select date</h2>
+                    <input type="date" id="stateDate">
+                </div>
                 <!-- Search -->
                 <div class="medium-6 columns">
                     <h2>Search the State</h2>
@@ -88,7 +105,7 @@
                             <li id="st-f-1">State name: </li>
                             <li id="st-f-2">Number of deaths: </li>
                             <li id="st-f-3">Positive cases: </li>
-                            <li id="st-f-4">Hospitalized: </li>                            
+                            <li id="st-f-4">Hospitalized: </li>
                         </ul>
                     </div>
                     <div class="medium-3 columns stateFct-1">
@@ -96,7 +113,7 @@
                             <li id="st-f-5">ICU: </li>
                             <li id="st-f-6">Total Test: </li>
                             <li id="st-f-7">Example </li>
-                            <li id="st-f-8">Example </li>                           
+                            <li id="st-f-8">Example </li>
                         </ul>
                     </div>
                     <div class="medium-3 columns stateFct-1">
@@ -105,7 +122,7 @@
                             <li id="st-f-10">Example: </li>
                             <li id="st-f-11">Example: </li>
                             <li id="st-f-12">Example: </li>
-                          
+
                         </ul>
                     </div>
                     <div class="medium-3 columns stateFct-1">
@@ -113,39 +130,54 @@
                             <li id="st-f-13">Example: </li>
                             <li id="st-f-14">Example: </li>
                             <li id="st-f-15">Example: </li>
-                            <li id="st-f-16">Example: </li>                          
+                            <li id="st-f-16">Example: </li>
                         </ul>
                     </div>
-                   
-                    
+
+
                 </div>
             </div>
         </div>
     </div>
 
-<!-- Map  -->
-    <iframe class="actual-map" src="https://ourworldindata.org/grapher/covid-stringency-index?year=2020-05-07"
-        style="width: 100%; height: 600px; border: 2px solid rounded;"></iframe>
-
+    <!-- Map  -->
+    <div class="row">
+        <iframe class="actual-map" src="https://ourworldindata.org/grapher/covid-stringency-index?year=2020-05-07"
+            style="width: 100%; height: 600px; border: 2px solid rounded; "></iframe>
+    </div>
     <hr>
 
     <div class="row column">
-        <h4 style="margin: 0;" class="text-center">RELATED MATERIALS</h4>
+        <h4 style="margin: 0;" id="materials" class="text-center">RELATED MATERIALS</h4>
     </div>
 
     <hr>
 
-<!-- Video -->
-    <iframe class="column" title="vimeo-player" src="https://player.vimeo.com/video/463163595" width="640" height="360"
-        frameborder="0" allowfullscreen></iframe>
+    <!-- Video -->
+    <div class="row">
+        <iframe class="column" title="vimeo-player" src="https://player.vimeo.com/video/463163595" width="640"
+            height="360" frameborder="0" allowfullscreen></iframe>
 
-    <div class="row small-up-3 medium-up-4 large-up-5">
+            <div class="row small-up-3 medium-up-4 large-up-5">
+
+            </div>
+    </div>
+
+   
 
     </div>
 
 
     <footer class="footer">
-        <p class="footerP">Copyright © 2021 </p>
+        <p class="footerP">Sources: </p>
+        <nav>
+            <ul>
+                <li><a href="https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker">Oxford Covid Stringency Project</a></li>
+                <li><a href="https://covidtracking.com/data/api/version-2">Covid Tracking Project</a></li>
+                <li><a href="https://www.census.gov/data/developers.html">US Census</a></li>
+            </ul>
+        </nav>
+
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
