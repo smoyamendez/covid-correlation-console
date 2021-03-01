@@ -11,12 +11,14 @@ var StatesArr = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM
 var CtryArr = ['ABW', 'AFG', 'AGO', 'ALB', 'AND', 'ARE', 'ARG', 'AUS', 'AUT', 'AZE', 'BDI', 'BEL', 'BEN', 'BFA', 'BGD', 'BGR', 'BHR', 'BHS', 'BIH', 'BLR', 'BLZ', 'BMU', 'BOL', 'BRA', 'BRB', 'BRN', 'BTN', 'BWA', 'CAF', 'CAN', 'CHE', 'CHL', 'CHN', 'CIV', 'CMR', 'COD', 'COG', 'COL', 'CPV', 'CRI', 'CUB', 'CYP', 'CZE', 'DEU', 'DJI', 'DMA', 'DNK', 'DOM', 'DZA', 'ECU', 'EGY', 'ERI', 'ESP', 'EST', 'ETH', 'FIN', 'FJI', 'FRA', 'FRO', 'GAB', 'GBR', 'GEO', 'GHA', 'GIN', 'GMB', 'GRC', 'GRL', 'GTM', 'GUM', 'GUY', 'HKG', 'HND', 'HRV', 'HTI', 'HUN', 'IDN', 'IND', 'IRL', 'IRN', 'IRQ', 'ISL', 'ISR', 'ITA', 'JAM', 'JOR', 'JPN', 'KAZ', 'KEN', 'KGZ', 'KHM', 'KIR', 'KOR', 'KWT', 'LAO', 'LBN', 'LBR', 'LBY', 'LKA', 'LSO', 'LTU', 'LUX', 'LVA', 'MAC', 'MAR', 'MCO', 'MDA', 'MDG', 'MEX', 'MLI', 'MLT', 'MMR', 'MNG', 'MOZ', 'MRT', 'MUS', 'MWI', 'MYS', 'NAM', 'NER', 'NGA', 'NIC', 'NLD', 'NOR', 'NPL', 'NZL', 'OMN', 'PAK', 'PAN', 'PER', 'PHL', 'PNG', 'POL', 'PRI', 'PRT', 'PRY', 'PSE', 'QAT', 'RKS', 'ROU', 'RUS', 'RWA', 'SAU', 'SDN', 'SEN', 'SGP', 'SLB', 'SLE', 'SLV', 'SMR', 'SOM', 'SRB', 'SSD', 'SUR', 'SVK', 'SVN', 'SWE', 'SWZ', 'SYC', 'SYR', 'TCD', 'TGO', 'THA', 'TJK', 'TKM', 'TLS', 'TON', 'TTO', 'TUN', 'TUR', 'TWN', 'TZA', 'UGA', 'UKR', 'URY', 'USA', 'UZB', 'VEN', 'VIR', 'VNM', 'VUT', 'YEM', 'ZAF', 'ZMB', 'ZWE'];
 var confirmedCases = $('#st-f-1'); var totalDeathsEl= $('#st-f-2'); var currentlyHospitalized = $('#st-f-3'); var currentlyICU = $('#st-f-4'); 
 var ctryConfirmedCases = $('#ctry-f-3'); var ctryDeathsEl= $('#ctry-f-2'); var ctryStringency = $('#ctry-f-4');
-var todayDate = new Date(); 
+var todayDate = new Date(); var minDate = new Date()
+
 
 //build array function
 function populateList(array, list) {
   $.each(array, function (i) { list.append($("<option>").attr('value', array[i])); })
 };
+
 //fill lists of states and countries
 populateList(StatesArr, statesList);
 populateList(CtryArr, ctryList);
@@ -29,13 +31,18 @@ function populateList(array, list) {
 };
 
 function validateDate(myDate) {
-  if (stateDate !== 's'){
-    
-    window.alert('Bad Date');
-    return;
+  if (myDate > (todayDate - 2) || !myDate || myDate < ('2020-02-01')) {    // test if the date is empty, is greater than 2 days prior to today,  test if date is before 2/1/2020
+    $('#alert-modal').style.display = 'block';                                                                            
+    return false;
   }
-  
 }
+
+// 1. Find function that's going to pull date and country name from the form
+// 2. Condition statement to check if cntryDateInput or cnrtySearchInput is not filled out, then trigger modal using $('#alert-modal').style.display = 'block'
+// if (!cnrtyDateInput || !cntrySearchInput) {
+//   $('#alert-modal').css("display: block")
+// }
+// 3. Place before the fetch call
 
 
 
@@ -69,56 +76,98 @@ function keepMatch(array, ctryCoding) {
   }
 };
 keepMatch(CtryArr, ctryCode);
+function saveCountry() {
+  var submittedCountry = cntrySrchInput.val();
+
+ var recentCountries = JSON.parse(localStorage.getItem("recentCountries")) || [];
+  if (recentCountries.length === 0) {
+    localStorage.setItem("recentCountries", JSON.stringify(submittedCountry));
+  } else {
+    recentCountries.initials.push(submittedCountry);
+    recentCountries.score.push(submittedCountry);
+    localStorage.setItem("recentCountries", JSON.stringify(recentCountries));
+  };
+  //  add to screen display
+}
 function pullOxford(url) {
-validateDate(todayDate);
+  validateDate(todayDate);
   fetch(url)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      var dateData=((data['data'])[oxfordDate])[ctryCode];
-      var confirmedOx=dateData.confirmed;  // Set Variables
-      var deathsOx=dateData.deaths;
-      var stringencyOx=dateData.stringency;
+      var dateData = ((data['data'])[oxfordDate])[ctryCode];
+      var confirmedOx = dateData.confirmed;  // Set Variables
+      var deathsOx = dateData.deaths;
+      var stringencyOx = dateData.stringency;
       ctryConfirmedCases.text('Confirmed Cases: ' + confirmedOx);  // Start send to HTML Fact List
       ctryDeathsEl.text('Deaths this day: ' + deathsOx);
-      ctryStringency.text('Stringency Score: '+ stringencyOx);
+      ctryStringency.text('Stringency Score: ' + stringencyOx);
     });
-  }
+    saveCountry();
+}
 // *******************************ARE THERE WAYS TO SIMPLY THE ABOVE CODE*********************************
 // const found = firstFind.find(element => element.key = ctryCode);
 // var result = $.grep(myArray, function(e){ return e.id == id; });
 // Covid Fetch Code
-var covidApiStart= 'https://api.covidtracking.com/v2/states/'; //Assemble Variables, Full URL https://api.covidtracking.com/v2/states/ca/2021-01-10/simple.json
-var covidApiState= 'ca';
-var covidApiDate= '2020-05-10';
-var covidApiEnd= 'simple.json';
-var covidApiFinal= covidApiStart + covidApiState + '/' + covidApiDate + '/' + covidApiEnd; 
-  function pullCovid(url) {      // BEGIN FETCH
-    validateDate(todayDate);
-    fetch(url)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        // console.log(data);
-        var currentICU = ((((data.data).outcomes).hospitalized).in_icu).currently; // Start set variables from COVID API data
-        var casesConfirmed = ((data.data).cases).confirmed;
-        var totalDeaths = (((data.data).outcomes).death).total;
-        var currentHospitalized = (((data.data).outcomes).hospitalized).currently;
-        confirmedCases.text('Confimed Cases: ' + casesConfirmed); // Start send to HTML Fact List
-        totalDeathsEl.text('Total Deaths: ' + totalDeaths);
-        currentlyHospitalized.text('Currently Hospitalized: ' + currentHospitalized);
-        currentlyICU.text('Currently in ICU: ' + currentICU);
-        pullDemogphc(stateDemographcURLFinal); 
-      });
-  };
-  //add listeners
-  $('#BtnCountry').click(function(event) {
-    event.preventDefault();
-    pullOxford();
-  });
-  $('#BtnState').click(function(event) {
-    event.preventDefault();
-    pullCovid();
-  });
+var covidApiStart = 'https://api.covidtracking.com/v2/states/'; //Assemble Variables, Full URL https://api.covidtracking.com/v2/states/ca/2021-01-10/simple.json
+var covidApiState = 'ca';
+var covidApiDate = '2020-05-10';
+var covidApiEnd = 'simple.json';
+var covidApiFinal = covidApiStart + covidApiState + '/' + covidApiDate + '/' + covidApiEnd;
+function pullCovid(url) {      // BEGIN FETCH
+  fetch(url)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      // console.log(data);
+      var currentICU = ((((data.data).outcomes).hospitalized).in_icu).currently; // Start set variables from COVID API data
+      var casesConfirmed = ((data.data).cases).confirmed;
+      var totalDeaths = (((data.data).outcomes).death).total;
+      var currentHospitalized = (((data.data).outcomes).hospitalized).currently;
+      confirmedCases.text('Confimed Cases: ' + casesConfirmed); // Start send to HTML Fact List
+      totalDeathsEl.text('Total Deaths: ' + totalDeaths);
+      currentlyHospitalized.text('Currently Hospitalized: ' + currentHospitalized);
+      currentlyICU.text('Currently in ICU: ' + currentICU);
+      pullDemogphc(stateDemographcURLFinal);
+    });
+};
+$('#BtnCountry').click(function(event) {
+  event.preventDefault();
+  pullOxford();
+});
+$('#BtnState').click(function(event) {
+  event.preventDefault();
+  pullCovid();
+});
+
+
+
+/**********Save country and states in local storage****************/
+
+
+
+   /* function recordScores(){
+      initials=playerInitials.value;
+      score=finalScore;
+      myscore = {
+          initials: [initials],
+          score: [score],
+      }
+      saveScores();
+  }
+  
+  // function to add new row.
+  function addLi() {
+      savedScores = JSON.parse(localStorage.getItem("savedScores"));
+      for (a=0; a < savedScores.initials.length; a++) {
+          myInitials=savedScores.initials[a];
+          myScore=savedScores.score[a];
+          liStamp=(myInitials + ": " + myScore)
+          var li = document.createElement('li');
+          li.appendChild(document.createTextNode(liStamp));
+          scoreList.appendChild(li);
+      }
+  }*/
+  
