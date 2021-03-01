@@ -42,6 +42,6 @@ This project is a collaborative effort between the following people:
 * Joshua Wallace [@jwallace212](https://github.com/jwallace212)
 * Sommer Moya-Mendez [@smoyamendez](https://github.com/smoyamendez)
 
-Please review and let me know us you see any ways this code can be improved.
+Please review and let us know if you see any ways this code can be improved.
 
 

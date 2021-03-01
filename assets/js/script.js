@@ -30,6 +30,7 @@ function populateList(array, list) {
 
 function validateDate(myDate) {
   if (stateDate !== 's'){
+    
     window.alert('Bad Date');
     return;
   }
@@ -94,6 +95,7 @@ var covidApiDate= '2020-05-10';
 var covidApiEnd= 'simple.json';
 var covidApiFinal= covidApiStart + covidApiState + '/' + covidApiDate + '/' + covidApiEnd; 
   function pullCovid(url) {      // BEGIN FETCH
+    validateDate(todayDate);
     fetch(url)
       .then(function (response) {
         return response.json();
@@ -112,5 +114,11 @@ var covidApiFinal= covidApiStart + covidApiState + '/' + covidApiDate + '/' + co
       });
   };
   //add listeners
-  $('#BtnCountry').click(pullOxford(oxfordFinalURL));
-  $('#BtnState').click(pullCovid(covidApiFinal));
+  $('#BtnCountry').click(function(event) {
+    event.preventDefault();
+    pullOxford();
+  });
+  $('#BtnState').click(function(event) {
+    event.preventDefault();
+    pullCovid();
+  });
