@@ -2,28 +2,45 @@
 
 ## Table of Contents
 
+* [Deployed Site](#deployed-site)
 * [User Story](#user-story)
 * [Description](#description)
 * [Screenshots](#screenshots)
+* [Sources](#sources)
 * [Installation](#installation)
 * [Contributing](#contributing)
 
+## Deployed Site
+---
+Deployed Website: https://smoyamendez.github.io/covid-correlation-console/
+
 ## User Story
 ---
-As as user, 
+AS A USER,
+I WANT to have a place where I can retrieve accurate COVID-19 statistics for the United States and internationally,
+SO THAT I can see how the stringency guidelines a specific country’s government had on COVID-19 policies affected the number of deaths and cases, 
+& THAT I can get up to date information on US state current COVID-19 status as compared to national US status.
 
 ## Description
 ---
-This repository ("covid-correlation-console") is a collaborative project that uses HTML, CSS, and JavaScript to create a console where a user can see accurate COVID-19 statistics. The user is able to select options to retrieve information for both the United States and internationally to compare a country's levels of stringency with their number of cases. The user is also able to see different demographics compared with COVID-19 facts by state
+This repository ("covid-correlation-console") is a collaborative project that uses HTML, CSS, and JavaScript to create a console where a user can see accurate COVID-19 statistics. Our site is a tool to get statistics both for United States and Internationally. We wanted to develop a place where a user can go to retrieve accurate statistics and compare different demographics and stringency levels against how many COVID-19 cases were confirmed.
 
-
-Deployed Website: https://smoyamendez.github.io/covid-correlation-console/
 
 ## Screenshots
 ---
 Home Page
 
 ![Home Screenshot](#)
+
+## Sources
+---
+### APIs
+* [Oxford Covid Stringency Project](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
+* [COVID Tracking Project](https://covidtracking.com/data/api/version-2)
+* [US Census](https://www.census.gov/data/developers.html)
+
+### Related Materials
+* [Oxford Government Response Tracker](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
 
 ## Installation
 ---
@@ -36,11 +53,11 @@ See repository here: https://github.com/smoyamendez/covid-correlation-console
 ## Contributing
 ---
 This project is a collaborative effort between the following people:
-* Laura Cejas [@Lauracejas](https://github.com/Lauracejas)
-* Carlos Abril [@cabril87](https://github.com/cabril87git)
-* James Jordan [@codeWarrior-debug](https://github.com/codeWarrior-debug)
-* Joshua Wallace [@jwallace212](https://github.com/jwallace212)
-* Sommer Moya-Mendez [@smoyamendez](https://github.com/smoyamendez)
+* HTML Mainster: Laura Cejas [@Lauracejas](https://github.com/Lauracejas)
+* CSS Mainster: Carlos Abril [@cabril87](https://github.com/cabril87git)
+* Javascript Mainster: James Jordan [@codeWarrior-debug](https://github.com/codeWarrior-debug)
+* API Mainster: Joshua Wallace [@jwallace212](https://github.com/jwallace212)
+* GitLord: Sommer Moya-Mendez [@smoyamendez](https://github.com/smoyamendez)
 
 Please review and let us know if you see any ways this code can be improved.
 
