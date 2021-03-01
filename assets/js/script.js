@@ -48,8 +48,8 @@ populateList(StatesArr, statesList);
 populateList(CtryArr, ctryList);
 var stateDemogphcUrlBase = 'https://api.census.gov/data/2019/acs/acs1?get='; // api variable setting demographic
 var stateDemogphcUrlquerys = 'NAME,B02001_002E,B02001_003E,B02001_004E,B02001_005E,,,B01001_002E,B01001_026E,B01003_001E,B02001_002E,B02001_003E,B17024_001E,B17020_001E,C27001_001E';
-var stateDemogphcUrlEnd = '&for=state:*';
-var stateDemographcURLFinal = 'https://api.census.gov/data/2019/acs/acs1?get=NAME,B02001_002E,B02001_003E,B02001_004E,&for=state:17';   //stateDemogphcUrlBase+stateDemogphcUrlquerys+stateDemogphcUrlEnd;
+var stateDemogphcUrlEnd = '&for=state:17';
+var stateDemographcURLFinal = stateDemogphcUrlBase + stateDemogphcUrlquerys + stateDemogphcUrlEnd;   //stateDemogphcUrlBase+stateDemogphcUrlquerys+stateDemogphcUrlEnd;
 function populateList(array, list) {
   $.each(array, function (i) { list.append($("<option>").attr('value', array[i])); })
 };
