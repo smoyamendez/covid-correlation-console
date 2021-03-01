@@ -37,10 +37,10 @@ See repository here: https://github.com/smoyamendez/covid-correlation-console
 ---
 This project is a collaborative effort between the following people:
 * Laura Cejas [@Lauracejas](https://github.com/Lauracejas)
-* Carlos Abril [@cabril87](https://github.com/cabril87git )
-* James Jordan @codeWarrior-debug
-* Joshua Wallace @jwallace212
-* Sommer Moya-Mendez @smoyamendez
+* Carlos Abril [@cabril87](https://github.com/cabril87git)
+* James Jordan [@codeWarrior-debug](https://github.com/codeWarrior-debug)
+* Joshua Wallace [@jwallace212](https://github.com/jwallace212)
+* Sommer Moya-Mendez [@smoyamendez](https://github.com/smoyamendez)
 
 Please review and let me know us you see any ways this code can be improved.
 
