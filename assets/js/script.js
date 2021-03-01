@@ -10,9 +10,8 @@ var StatesArr = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM
 var CtryArr = ['ABW', 'AFG', 'AGO', 'ALB', 'AND', 'ARE', 'ARG', 'AUS', 'AUT', 'AZE', 'BDI', 'BEL', 'BEN', 'BFA', 'BGD', 'BGR', 'BHR', 'BHS', 'BIH', 'BLR', 'BLZ', 'BMU', 'BOL', 'BRA', 'BRB', 'BRN', 'BTN', 'BWA', 'CAF', 'CAN', 'CHE', 'CHL', 'CHN', 'CIV', 'CMR', 'COD', 'COG', 'COL', 'CPV', 'CRI', 'CUB', 'CYP', 'CZE', 'DEU', 'DJI', 'DMA', 'DNK', 'DOM', 'DZA', 'ECU', 'EGY', 'ERI', 'ESP', 'EST', 'ETH', 'FIN', 'FJI', 'FRA', 'FRO', 'GAB', 'GBR', 'GEO', 'GHA', 'GIN', 'GMB', 'GRC', 'GRL', 'GTM', 'GUM', 'GUY', 'HKG', 'HND', 'HRV', 'HTI', 'HUN', 'IDN', 'IND', 'IRL', 'IRN', 'IRQ', 'ISL', 'ISR', 'ITA', 'JAM', 'JOR', 'JPN', 'KAZ', 'KEN', 'KGZ', 'KHM', 'KIR', 'KOR', 'KWT', 'LAO', 'LBN', 'LBR', 'LBY', 'LKA', 'LSO', 'LTU', 'LUX', 'LVA', 'MAC', 'MAR', 'MCO', 'MDA', 'MDG', 'MEX', 'MLI', 'MLT', 'MMR', 'MNG', 'MOZ', 'MRT', 'MUS', 'MWI', 'MYS', 'NAM', 'NER', 'NGA', 'NIC', 'NLD', 'NOR', 'NPL', 'NZL', 'OMN', 'PAK', 'PAN', 'PER', 'PHL', 'PNG', 'POL', 'PRI', 'PRT', 'PRY', 'PSE', 'QAT', 'RKS', 'ROU', 'RUS', 'RWA', 'SAU', 'SDN', 'SEN', 'SGP', 'SLB', 'SLE', 'SLV', 'SMR', 'SOM', 'SRB', 'SSD', 'SUR', 'SVK', 'SVN', 'SWE', 'SWZ', 'SYC', 'SYR', 'TCD', 'TGO', 'THA', 'TJK', 'TKM', 'TLS', 'TON', 'TTO', 'TUN', 'TUR', 'TWN', 'TZA', 'UGA', 'UKR', 'URY', 'USA', 'UZB', 'VEN', 'VIR', 'VNM', 'VUT', 'YEM', 'ZAF', 'ZMB', 'ZWE'];
 var confirmedCases = $('#st-f-1'); var totalDeathsEl= $('#st-f-2'); var currentlyHospitalized = $('#st-f-3'); var currentlyICU = $('#st-f-4'); 
 var ctryConfirmedCases = $('#ctry-f-3'); var ctryDeathsEl= $('#ctry-f-2'); var ctryStringency = $('#ctry-f-4');
-var usatotalDeathsEl=$('#ctry-f-6');  // Start send to HTML Fact List
-var usaConfirmedCases=$('#ctry-f-5'); 
-var usactryStringency=$('#ctry-f-7'); 
+var recentCountries = JSON.parse(localStorage.getItem("recentCountries")) || [];
+var recentStates = JSON.parse(localStorage.getItem('recentStates')) || [];
 
 cntryDateEl.attr('max',moment().subtract(2,"days").format('YYYY-MM-DD'));
 cntryDateEl.attr('min',moment("2020-02-01").format('YYYY-MM-DD'));
@@ -113,14 +112,9 @@ function keepMatch(array, ctryCoding) {
 
 keepMatch(CtryArr, ctryCode);
 function saveCountry() {
-  var submittedCountry = $('#search-Country').val();
-  var recentCountries = JSON.parse(localStorage.getItem("recentCountries")) || [];
-  if (recentCountries.length === 0) {
-    localStorage.setItem("recentCountries", JSON.stringify([submittedCountry]));
-  } else {
+  var submittedCountry = cntrySrchInput;
     recentCountries.push(submittedCountry);
     localStorage.setItem("recentCountries", JSON.stringify(recentCountries));
-  };
   //  add to screen display
 }
 function pullOxford(url) {
@@ -155,11 +149,29 @@ function pullOxford(url) {
 // var result = $.grep(myArray, function(e){ return e.id == id; });
 // Covid Fetch Code
 var covidApiStart = 'https://api.covidtracking.com/v2/states/'; //Assemble Variables, Full URL https://api.covidtracking.com/v2/states/ca/2021-01-10/simple.json
-var covidApiState = 'ca';
+var covidApiState = '';
 var covidApiDate = '2020-05-10';
 var covidApiEnd = 'simple.json';
 var covidApiFinal = covidApiStart + covidApiState + '/' + covidApiDate + '/' + covidApiEnd;
-function pullCovid(url) {      // BEGIN FETCH
+var stateCode = stateSrchInput;
+var stateIdnex;
+
+function keepMatch(array, stateCoding) {
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] === stateCoding) {
+      stateIdnex = i;
+      return;
+    }
+    
+  }
+};
+keepMatch(StatesArr, stateCode)
+function saveState() {
+  var submittedState = stateSrchInput;
+      recentStates.push(submittedState);
+     localStorage.setItem('recentStates', JSON.stringify(recentStates));
+}
+function pullCovid(url) {       // BEGIN FETCH
   fetch(url)
     .then(function (response) {
       return response.json();
