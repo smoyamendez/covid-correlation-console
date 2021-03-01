@@ -1,8 +1,8 @@
+var cntryDateEl = $('#ctryDate');
 var ctryList = $('#ctry-list'); // var setting ---ON page load, populate state/country codes and dates, identify inputs
 var statesList = $('#st-list');
-var cntryDateInput = $('#ctryDate').val();
 var stateDateInput = $('#stateDate').val();
-var cntrySrchInput = $('#search-Country').val();
+var ctryCode=$('#search-Country').val();
 var stateSrchInput = $('#search-State').val();
 // var datePickers = $('.dateSel')  // write validation code here - use modals instead of alerts and confirms to have validation messages
 var stateDate = $('#stateDate').val();
@@ -10,7 +10,12 @@ var StatesArr = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM
 var CtryArr = ['ABW', 'AFG', 'AGO', 'ALB', 'AND', 'ARE', 'ARG', 'AUS', 'AUT', 'AZE', 'BDI', 'BEL', 'BEN', 'BFA', 'BGD', 'BGR', 'BHR', 'BHS', 'BIH', 'BLR', 'BLZ', 'BMU', 'BOL', 'BRA', 'BRB', 'BRN', 'BTN', 'BWA', 'CAF', 'CAN', 'CHE', 'CHL', 'CHN', 'CIV', 'CMR', 'COD', 'COG', 'COL', 'CPV', 'CRI', 'CUB', 'CYP', 'CZE', 'DEU', 'DJI', 'DMA', 'DNK', 'DOM', 'DZA', 'ECU', 'EGY', 'ERI', 'ESP', 'EST', 'ETH', 'FIN', 'FJI', 'FRA', 'FRO', 'GAB', 'GBR', 'GEO', 'GHA', 'GIN', 'GMB', 'GRC', 'GRL', 'GTM', 'GUM', 'GUY', 'HKG', 'HND', 'HRV', 'HTI', 'HUN', 'IDN', 'IND', 'IRL', 'IRN', 'IRQ', 'ISL', 'ISR', 'ITA', 'JAM', 'JOR', 'JPN', 'KAZ', 'KEN', 'KGZ', 'KHM', 'KIR', 'KOR', 'KWT', 'LAO', 'LBN', 'LBR', 'LBY', 'LKA', 'LSO', 'LTU', 'LUX', 'LVA', 'MAC', 'MAR', 'MCO', 'MDA', 'MDG', 'MEX', 'MLI', 'MLT', 'MMR', 'MNG', 'MOZ', 'MRT', 'MUS', 'MWI', 'MYS', 'NAM', 'NER', 'NGA', 'NIC', 'NLD', 'NOR', 'NPL', 'NZL', 'OMN', 'PAK', 'PAN', 'PER', 'PHL', 'PNG', 'POL', 'PRI', 'PRT', 'PRY', 'PSE', 'QAT', 'RKS', 'ROU', 'RUS', 'RWA', 'SAU', 'SDN', 'SEN', 'SGP', 'SLB', 'SLE', 'SLV', 'SMR', 'SOM', 'SRB', 'SSD', 'SUR', 'SVK', 'SVN', 'SWE', 'SWZ', 'SYC', 'SYR', 'TCD', 'TGO', 'THA', 'TJK', 'TKM', 'TLS', 'TON', 'TTO', 'TUN', 'TUR', 'TWN', 'TZA', 'UGA', 'UKR', 'URY', 'USA', 'UZB', 'VEN', 'VIR', 'VNM', 'VUT', 'YEM', 'ZAF', 'ZMB', 'ZWE'];
 var confirmedCases = $('#st-f-1'); var totalDeathsEl= $('#st-f-2'); var currentlyHospitalized = $('#st-f-3'); var currentlyICU = $('#st-f-4'); 
 var ctryConfirmedCases = $('#ctry-f-3'); var ctryDeathsEl= $('#ctry-f-2'); var ctryStringency = $('#ctry-f-4');
+var usatotalDeathsEl=$('#ctry-f-6');  // Start send to HTML Fact List
+var usaConfirmedCases=$('#ctry-f-5'); 
+var usactryStringency=$('#ctry-f-7'); 
 
+cntryDateEl.attr('max',moment().subtract(2,"days").format('YYYY-MM-DD'));
+cntryDateEl.attr('min',moment("2020-02-01").format('YYYY-MM-DD'));
 
 //build array function
 function populateList(array, list) {
@@ -50,6 +55,7 @@ function populateList(array, list) {
 };
 
 function validateCtry() {
+  var cntrySrchInput=$('#search-Country').val();
   if (!cntrySrchInput) {    
     $('#alert-modal').css(display = 'block');                                                                            
     // return false;
@@ -92,9 +98,9 @@ function pullDemogphc(url) {
 // Oxford fetch code
       //https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/2020-03-01/2020-03-15
 var oxfordUrlStart = 'https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/';
-var oxfordFinalURLxxx = oxfordUrlStart + ctryDate + '/' + ctryDate;
-var oxfordFinalURL='https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/2020-03-01/2020-03-01'
-var ctryCode = cntrySrchInput;
+var oxfordFinalURL = oxfordUrlStart + ctryDate + '/' + ctryDate;
+// var oxfordFinalURL='https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/2020-03-01/2020-03-01'
+
 var ctryIndex;
 function keepMatch(array, ctryCoding) {
   for (let i = 0; i < array.length; i++) {
@@ -104,11 +110,11 @@ function keepMatch(array, ctryCoding) {
     }
   }
 };
+
 keepMatch(CtryArr, ctryCode);
 function saveCountry() {
-  var submittedCountry = cntrySrchInput;
-
- var recentCountries = JSON.parse(localStorage.getItem("recentCountries")) || [];
+  var submittedCountry = $('#search-Country').val();
+  var recentCountries = JSON.parse(localStorage.getItem("recentCountries")) || [];
   if (recentCountries.length === 0) {
     localStorage.setItem("recentCountries", JSON.stringify([submittedCountry]));
   } else {
@@ -118,20 +124,29 @@ function saveCountry() {
   //  add to screen display
 }
 function pullOxford(url) {
-  validateDate(cntryDateInput);
+  var  cntryDate= cntryDateEl.val();
+  validateDate(cntryDate);
   validateCtry();
   fetch(url)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      var dateData = ((data['data'])["2020-03-01"])[ctryCode];//[ctryCode]
+      var cntryDate = $('#ctryDate').val();
+      var dateData = ((data['data'])[cntryDate])[$('#search-Country').val()];
+      var usaData =  ((data['data'])[cntryDate])['USA'];
       var confirmedOx = dateData.confirmed;  // Set Variables
       var deathsOx = dateData.deaths;
       var stringencyOx = dateData.stringency;
       ctryConfirmedCases.text('Confirmed Cases: ' + confirmedOx);  // Start send to HTML Fact List
       ctryDeathsEl.text('Deaths this day: ' + deathsOx);
       ctryStringency.text('Stringency Score: ' + stringencyOx);
+      var confirmedUSAOx = usaData.confirmed;  // Set Variables
+      var deathsUSAOx = usaData.deaths; 
+      var stringencyUSAOx = usaData.stringency;
+      usaConfirmedCases.text('Confirmed Cases: ' + confirmedUSAOx);  // Start send to HTML Fact List
+      usatotalDeathsEl.text('Deaths this day: ' + deathsUSAOx);
+      usactryStringency.text('Stringency Score: ' + stringencyUSAOx);
     });
     saveCountry();
 }
@@ -166,9 +181,13 @@ function pullCovid(url) {      // BEGIN FETCH
 
 
 $('#BtnCountry').click(function(event) {
+  var ctryDate = $('#ctryDate').val();
+  var oxfordUrlStart = 'https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/';
+  var oxfordFinalURL = oxfordUrlStart + ctryDate + '/' + ctryDate;
   event.preventDefault();
   pullOxford(oxfordFinalURL);
 });
+
 $('#BtnState').click(function(event) {
   event.preventDefault();
   pullCovid(covidApiFinal);
