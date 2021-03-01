@@ -47,9 +47,9 @@ var ctryDate = formatDate(new Date("2020-05-01"));
 populateList(StatesArr, statesList);
 populateList(CtryArr, ctryList);
 var stateDemogphcUrlBase = 'https://api.census.gov/data/2019/acs/acs1?get='; // api variable setting demographic
-var stateDemogphcUrlquerys = 'NAME,B02001_002E,B02001_003E,B02001_004E,B02001_005E,';
-var stateDemogphcUrlEnd = '&for=state:*';
-var stateDemographcURLFinal = 'https://api.census.gov/data/2019/acs/acs1?get=NAME,B02001_002E,B02001_003E,B02001_004E,B02001_005E&for=state:17';   //stateDemogphcUrlBase+stateDemogphcUrlquerys+stateDemogphcUrlEnd;
+var stateDemogphcUrlquerys = 'NAME,B02001_002E,B02001_003E,B02001_004E,B02001_005E,,,B01001_002E,B01001_026E,B01003_001E,B02001_002E,B02001_003E,B17024_001E,B17020_001E,C27001_001E';
+var stateDemogphcUrlEnd = '&for=state:17';
+var stateDemographcURLFinal = stateDemogphcUrlBase + stateDemogphcUrlquerys + stateDemogphcUrlEnd;   //stateDemogphcUrlBase+stateDemogphcUrlquerys+stateDemogphcUrlEnd;
 function populateList(array, list) {
   $.each(array, function (i) { list.append($("<option>").attr('value', array[i])); })
 };
@@ -57,14 +57,14 @@ function populateList(array, list) {
 function validateCtry() {
   var cntrySrchInput=$('#search-Country').val();
   if (!cntrySrchInput) {    
-    $('#alert-modal').css(display = 'block');                                                                            
+    $('#alert-modal').css("display", "block");                                                                            
     // return false;
   }
 }
 
 function validateDate(myDate) {
-  if (ctryDate > (todayDate - 2) || !ctryDate || myDate < ('2020-02-01')) {    // test if the date is empty, is greater than 2 days prior to today,  test if date is before 2/1/2020
-    $('#alert-modal').css(display = 'block');                                                                            
+  if (!ctryDate) {    // test if the date is empty, is greater than 2 days prior to today,  test if date is before 2/1/2020
+    $('#alert-modal').css("display", "block");                                                                            
     // return false;
   }
 }
