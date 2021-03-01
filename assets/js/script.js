@@ -8,6 +8,7 @@ var stateSrchInput = $('#search-State');
 var StatesArr = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY'];
 var CtryArr = ['ABW', 'AFG', 'AGO', 'ALB', 'AND', 'ARE', 'ARG', 'AUS', 'AUT', 'AZE', 'BDI', 'BEL', 'BEN', 'BFA', 'BGD', 'BGR', 'BHR', 'BHS', 'BIH', 'BLR', 'BLZ', 'BMU', 'BOL', 'BRA', 'BRB', 'BRN', 'BTN', 'BWA', 'CAF', 'CAN', 'CHE', 'CHL', 'CHN', 'CIV', 'CMR', 'COD', 'COG', 'COL', 'CPV', 'CRI', 'CUB', 'CYP', 'CZE', 'DEU', 'DJI', 'DMA', 'DNK', 'DOM', 'DZA', 'ECU', 'EGY', 'ERI', 'ESP', 'EST', 'ETH', 'FIN', 'FJI', 'FRA', 'FRO', 'GAB', 'GBR', 'GEO', 'GHA', 'GIN', 'GMB', 'GRC', 'GRL', 'GTM', 'GUM', 'GUY', 'HKG', 'HND', 'HRV', 'HTI', 'HUN', 'IDN', 'IND', 'IRL', 'IRN', 'IRQ', 'ISL', 'ISR', 'ITA', 'JAM', 'JOR', 'JPN', 'KAZ', 'KEN', 'KGZ', 'KHM', 'KIR', 'KOR', 'KWT', 'LAO', 'LBN', 'LBR', 'LBY', 'LKA', 'LSO', 'LTU', 'LUX', 'LVA', 'MAC', 'MAR', 'MCO', 'MDA', 'MDG', 'MEX', 'MLI', 'MLT', 'MMR', 'MNG', 'MOZ', 'MRT', 'MUS', 'MWI', 'MYS', 'NAM', 'NER', 'NGA', 'NIC', 'NLD', 'NOR', 'NPL', 'NZL', 'OMN', 'PAK', 'PAN', 'PER', 'PHL', 'PNG', 'POL', 'PRI', 'PRT', 'PRY', 'PSE', 'QAT', 'RKS', 'ROU', 'RUS', 'RWA', 'SAU', 'SDN', 'SEN', 'SGP', 'SLB', 'SLE', 'SLV', 'SMR', 'SOM', 'SRB', 'SSD', 'SUR', 'SVK', 'SVN', 'SWE', 'SWZ', 'SYC', 'SYR', 'TCD', 'TGO', 'THA', 'TJK', 'TKM', 'TLS', 'TON', 'TTO', 'TUN', 'TUR', 'TWN', 'TZA', 'UGA', 'UKR', 'URY', 'USA', 'UZB', 'VEN', 'VIR', 'VNM', 'VUT', 'YEM', 'ZAF', 'ZMB', 'ZWE'];
 var confirmedCases = $('#st-f-1'); var totalDeathsEl= $('#st-f-2'); var currentlyHospitalized = $('#st-f-3'); var currentlyICU = $('#st-f-4'); 
+var totMaleEstEl = $('#st-f-7'); var totFemaleEstEl= $('#st-f-8'); var totPopEl = $('#st-f-9'); var caucasianEl = $('#st-f-10'); var africanAmericanEl = $('#st-f-11'); var povLevelEl = $('#st-f-12'); 
 var ctryConfirmedCases = $('#ctry-f-3'); var ctryDeathsEl= $('#ctry-f-2'); var ctryStringency = $('#ctry-f-4');
 var usaConfirmedCases = $('#ctry-f-7'); var usatotalDeathsEl= $('#ctry-f-6'); 
 var recentCountries = JSON.parse(localStorage.getItem("recentCountries")) || [];
@@ -40,7 +41,7 @@ var ctryDate = formatDate(new Date("2020-05-01"));
 populateList(StatesArr, statesList);
 populateList(CtryArr, ctryList);
 var stateDemogphcUrlBase = 'https://api.census.gov/data/2019/acs/acs1?get='; // api variable setting demographic
-var stateDemogphcUrlquerys = 'NAME,B02001_002E,B02001_003E,B02001_004E,B02001_005E,,,B01001_002E,B01001_026E,B01003_001E,B02001_002E,B02001_003E,B17024_001E,B17020_001E,C27001_001E';
+var stateDemogphcUrlquerys = 'NAME,B02001_002E,B02001_003E,B02001_004E,B02001_005E,B01001_002E,B01001_026E,B01003_001E,B02001_002E,B02001_003E,B17024_001E,B17020_001E,C27001_001E';
 var stateDemogphcUrlEnd = '&for=state:17';
 var stateDemographcURLFinal = stateDemogphcUrlBase + stateDemogphcUrlquerys + stateDemogphcUrlEnd;   //stateDemogphcUrlBase+stateDemogphcUrlquerys+stateDemogphcUrlEnd;
 function populateList(array, list) {
@@ -101,7 +102,25 @@ function pullDemogphc(url) {
     })
     .then(function (data) {
       console.log(data);
-
+      var stateName = data[0][0];
+      console.log(stateName);
+      var totMaleEst = data[0][1];
+      console.log(totMaleEst);
+      var totFemaleEst = data[0][2];
+      var totPop = data[0][3];
+      var caucasian = data[0][4];
+      var africanAmerican = data[0][5];
+      // var otherRace = data[0][6];
+      var asian = data[0][7];
+      var povLevel = data[0][8];
+      // var povStatus = data[0][9];
+      // var insBySex = data[0][10];
+      totMaleEstEl.text('Total Male Estimate: ' + totMaleEst);
+      totFemaleEstEl.text('Total Female Estimate: ' + totFemaleEst);
+      totPopEl.text('Total Population: ' + totPop);
+      caucasianEl.text('Caucasian: ' + caucasian);
+      africanAmericanEl.text('African American: ' + africanAmerican);
+      povLevelEl.text('Ratio of Income to Poverty Level: ' + povLevel);
     });
 }
 
@@ -223,6 +242,7 @@ $('#BtnState').click(function(event) {
   var covidApiFinal = covidApiStart + covidApiState + '/' + covidApiDate + '/' + covidApiEnd;
   event.preventDefault();
   pullCovid(covidApiFinal);
+  pullDemogphc(stateDemographcURLFinal);
 });
 
 
