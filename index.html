@@ -21,8 +21,8 @@
                 <li><a href="#materials">Related materials</a></li>
             </ul>
         </nav>
-        <img class='img align-center' src="./images/gif.gif" alt="covid">
     </header>
+    <img class='img align-center' src="./images/gif.gif" alt="covid">
 
     <!--Instructions-->
     <div class="Instructions"></div>
@@ -44,13 +44,13 @@
                         <input id="search-Country" list="ctry-list" name="ctry">
                         <datalist id="ctry-list">
                         </datalist>
-                        <input id="BtnCountry" type="button" value="Submit" onclick="document.getElementById('alert-modal').style.display = 'block'">
+                        <input id="BtnCountry" type="button" value="Submit">
                          <!-- Modal body -->
                          <div class="modal" id="alert-modal">
                             <h2>Warning</h2>
                             <p>Please select a valid date and one Country</p>
                            <!-- Keep onclick attribute on modal -->
-                            <button class="close" onclick="document.getElementById('alert-modal').style.display = 'none'">close</button>
+                            <button class="close">close</button>
                         </div>
                     </form>
                 </div>
@@ -87,7 +87,7 @@
                 </div>
                 <!-- Search -->
                 <div class="medium-6 columns">
-                    <h2>Search the State</h2>
+                    <h2>Search the US. State</h2>
                     <form class="input-Country">
                         <input id="search-State" list="st-list" name="st">
                         <datalist id="st-list">
@@ -110,25 +110,24 @@
                         <ul>
                             <li id="st-f-5">ICU: </li>
                             <li id="st-f-6">Total Test: </li>
-                            <li id="st-f-7">Example </li>
-                            <li id="st-f-8">Example </li>
+                            <li id="st-f-7">Total Male Estimate: </li>
+                            <li id="st-f-8">Total Female Estimate: </li>
                         </ul>
                     </div>
                     <div class="medium-3 columns stateFct-1">
                         <ul>
-                            <li id="st-f-9">Example: </li>
-                            <li id="st-f-10">Example: </li>
-                            <li id="st-f-11">Example: </li>
-                            <li id="st-f-12">Example: </li>
+                            <li id="st-f-9">Total Population: </li>
+                            <li id="st-f-10">Caucasian: </li>
+                            <li id="st-f-11">African-American: </li>
+                            <li id="st-f-12">Ratio of Income to Poverty Level: </li>
 
                         </ul>
                     </div>
                     <div class="medium-3 columns stateFct-1">
                         <ul>
-                            <li id="st-f-13">Example: </li>
-                            <li id="st-f-14">Example: </li>
-                            <li id="st-f-15">Example: </li>
-                            <li id="st-f-16">Example: </li>
+                            <li id="st-f-13">Poverty Status: </li>
+                            <li id="st-f-14">Health insurance coverage by sex by age percent: </li>
+                            <li id="st-f-15">Example: </li>                          
                         </ul>
                     </div>
                 </div>
