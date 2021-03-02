@@ -120,7 +120,6 @@ h2 {
   }
 }
 .container {
-  
   margin: 20px;
   background-image: radial-gradient(#157094, #51534e 500px);
   padding: 30px;
@@ -173,27 +172,36 @@ body {
   list-style-type: none ;
   padding: 30px 20px;
   color: white;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-size: 10px;
   background-image: radial-gradient(#157094, #51534e 100px);
   border-radius: 10px;
   text-align: left;
+}
+.ctryFct-1 {
+  
 }
 .stateFct-1 ul {
   box-shadow: inset 10px 5px 25px 5px black, 5px 5px 12px 2px black;
   list-style-type: none ;
   padding: 30px 20px;
   color: white;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-size: 10px;
   background-image: radial-gradient(#157094, #51534e 100px);
   border-radius: 10px;
   text-align: left;
 }
 .ctryFct-1 li {
+  text-align: center;
+  font-family:Georgia, 'Times New Roman', Times, serif ;
+  font-size: 15px;
   padding-bottom: 20px;
-}
+} 
 .stateFct-1 li {
+  text-align: center;
+  font-family:Georgia, 'Times New Roman', Times, serif ;
+  font-size: 15px;
   padding-bottom: 20px;
 }
 .videoWrapper {
