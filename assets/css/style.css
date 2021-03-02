@@ -81,10 +81,12 @@ header ul{
   flex-direction:row;
   list-style-type: none;
   padding-top: 10px;
+  margin: initial;
   color: white;
 } 
 header li {
   margin: 0px 10px;
+  
 }
 h2 {
   font-size: 15px;
@@ -98,15 +100,24 @@ h2 {
   box-shadow: inset 10px 5px 25px 5px black, 5px 5px 12px 2px black; 
 }
 .img {
-  width: 200px;
-  height: 100px;
+  
+  top: 10%;
+  left: 40%;
+  margin: -50px 0px 0px -50px;
+  width: 400px;
+  height: 200px;
   position:absolute;
-  animation-name: img;
-  animation: 5s infinite;
+  animation: float 6s ease-out infinite;
+ 
 }
-@keyframes img {
-  from {left: 0px;}
-  to {left: 300px;}
+   
+
+
+@keyframes float {
+  50% {
+     transform: translate(0, 40px);
+     transform: s
+  }
 }
 .container {
   
@@ -243,10 +254,35 @@ body {
     display: inline-block;
     box-shadow: inset 10px 5px 25px 5px black, 5px 5px 12px 2px black;
   }
-
-  .ftlist li{
-    list-style-type:none;
-  }
+  @media screen and (max-width:530px){ 
+    .img { 
+      
+        display: none;
+    }
+    header {
+      margin:20px
+    }
+    header ul {
+      display: inline-table;
+      width: 75%;
+      margin-bottom: 15px;
+    }
+    header li {
+      margin: 20px;;
+    }
+    .footer {
+      display:inline-block
+    }
+    .footer ul {
+      display: inline-block;
+      width: 75%;
+      margin-bottom: 15px;
+    }
+    .footer a {
+      margin: 20px;
+      width: 75%;
+    }
+  } 
   
  
 

@@ -138,7 +138,7 @@ function pullOxford(url) {   //actual fetch
       var deathsOx = dateData.deaths;
       var stringencyOx = dateData.stringency;
       ctryConfirmedCases.text('Confirmed Cases: ' + confirmedOx);  // Start send to HTML Fact List
-      ctryDeathsEl.text('Deaths this day: ' + deathsOx);
+      ctryDeathsEl.text('Deaths to Date: ' + deathsOx);
       ctryStringency.text('Stringency Score: ' + stringencyOx);
       var confirmedUSAOx = usaData.confirmed;  
       var deathsUSAOx = usaData.deaths; 
@@ -147,7 +147,7 @@ function pullOxford(url) {   //actual fetch
       $("#ctry-f-5").text('USA');
       $("#ctry-f-1").text(ctryCode);
       usaConfirmedCases.text('Confirmed Cases: ' + confirmedUSAOx);  // Start send to HTML Fact List
-      usatotalDeathsEl.text('Deaths this day: ' + deathsUSAOx);
+      usatotalDeathsEl.text('Deaths to Date: ' + deathsUSAOx);
       $('#ctry-f-8').text('Stringency Score: ' + stringencyUSAOx);
     });
     saveCountry();
