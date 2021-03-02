@@ -23,6 +23,10 @@ function loadRecentPulls(){
   if (recentStates[1])$("#rec-st-2").html(recentStates[1].toUpperCase());
   if (recentStates[2])$("#rec-st-3").html(recentStates[2].toUpperCase());
 }
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+numberWithCommas
 
 $( document ).ready(function() {
 recentCountries = JSON.parse(localStorage.getItem("recentCountries")) || [];
@@ -92,12 +96,12 @@ function pullDemogphc(url) {
       var caucasian = data[1][8];
       var africanAmerican = data[1][9];
       var asian = data[1][4];
-      asianEl.text('Asian: ' + asian)
-      totMaleEstEl.text('Total Male Estimate: ' + totMaleEst);
-      totFemaleEstEl.text('Total Female Estimate: ' + totFemaleEst);
-      totPopEl.text('Total Population: ' + totPop);
-      caucasianEl.text('Caucasian: ' + caucasian);
-      africanAmericanEl.text('African American: ' + africanAmerican);
+      asianEl.text('Asian: ' + numberWithCommas(asian) )
+      totMaleEstEl.text('Total Male Estimate: ' + numberWithCommas(totMaleEst));
+      totFemaleEstEl.text('Total Female Estimate: ' + numberWithCommas(totFemaleEst));
+      totPopEl.text('Total Population: ' + numberWithCommas(totPop));
+      caucasianEl.text('Caucasian: ' + numberWithCommas(caucasian));
+      africanAmericanEl.text('African American: ' + numberWithCommas(africanAmerican));
     });
 }
 
@@ -136,18 +140,18 @@ function pullOxford(url) {   //actual fetch
       var confirmedOx = dateData.confirmed;  
       var deathsOx = dateData.deaths;
       var stringencyOx = dateData.stringency;
-      ctryConfirmedCases.text('Confirmed Cases: ' + confirmedOx);  // Start send to HTML Fact List
-      ctryDeathsEl.text('Deaths to Date: ' + deathsOx);
-      ctryStringency.text('Stringency Score: ' + stringencyOx);
+      ctryConfirmedCases.text('Confirmed Cases: ' + numberWithCommas(confirmedOx));  // Start send to HTML Fact List
+      ctryDeathsEl.text('Deaths to Date: ' + numberWithCommas(deathsOx));
+      ctryStringency.text('Stringency Score: ' + numberWithCommas(stringencyOx));
       var confirmedUSAOx = usaData.confirmed;  
       var deathsUSAOx = usaData.deaths; 
       var stringencyUSAOx = usaData.stringency;
       var ctryCode=$('#search-Country').val().toUpperCase();
       $("#ctry-f-5").text('USA');
       $("#ctry-f-1").text(ctryCode);
-      usaConfirmedCases.text('Confirmed Cases: ' + confirmedUSAOx);  // Start send to HTML Fact List
-      usatotalDeathsEl.text('Deaths to Date: ' + deathsUSAOx);
-      $('#ctry-f-8').text('Stringency Score: ' + stringencyUSAOx);
+      usaConfirmedCases.text('Confirmed Cases: ' + numberWithCommas(confirmedUSAOx));  // Start send to HTML Fact List
+      usatotalDeathsEl.text('Deaths to Date: ' + numberWithCommas(deathsUSAOx));
+      $('#ctry-f-8').text('Stringency Score: ' + numberWithCommas(stringencyUSAOx));
     });
     saveCountry();
 }
@@ -176,10 +180,10 @@ function pullCovid(url) {
       var totalDeaths = (((data.data).outcomes).death).total;
       var currentHospitalized = (((data.data).outcomes).hospitalized).currently;
       stateAbbr.text(covidApiState.toUpperCase());
-      totalDeathsEl.text('Total Deaths: ' + totalDeaths);
-      currentlyHospitalized.text('Currently Hospitalized: ' + currentHospitalized);
-      currentlyICU.text('Currently in ICU: ' + currentICU);
-      confirmedCases.text('Positive Cases: ' + casesConfirmed);
+      totalDeathsEl.text('Total Deaths: ' + numberWithCommas(totalDeaths));
+      currentlyHospitalized.text('Currently Hospitalized: ' + numberWithCommas(currentHospitalized));
+      currentlyICU.text('Currently in ICU: ' + numberWithCommas(currentICU));
+      confirmedCases.text('Positive Cases: ' + numberWithCommas(casesConfirmed));
     });
 };
 
