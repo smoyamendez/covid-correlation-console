@@ -5,6 +5,7 @@
 * [Deployed Site](#deployed-site)
 * [User Story](#user-story)
 * [Description](#description)
+* [Process](#process)
 * [Screenshots](#screenshots)
 * [Sources](#sources)
 * [Installation](#installation)
@@ -23,14 +24,17 @@ SO THAT I can see how the stringency guidelines a specific country’s governmen
 
 ## Description
 ---
-This repository ("covid-correlation-console") is a collaborative project that uses HTML, CSS, and JavaScript to create a console where a user can see accurate COVID-19 statistics. Our site is a tool to get statistics both for United States and Internationally. We wanted to develop a place where a user can go to retrieve accurate statistics and compare different demographics and stringency levels against how many COVID-19 cases were confirmed.
+This repository ("covid-correlation-console") is a collaborative project that uses HTML, CSS, and JavaScript to create a console where a user can see accurate COVID-19 statistics. Our site is a tool to get statistics both for United States and Internationally. We wanted to develop a place where a user can go to retrieve accurate statistics to compare different demographics and stringency levels correlate with COVID-19 outcomes.
 
+## Process
+---
+We used Foundation to get the basic framework of our HTML. To pull in the information, we used three different API sources (see sources below) to fetch the data and display the statistics. 
 
 ## Screenshots
 ---
 Home Page
 
-![Home Screenshot](#)
+![Home Screenshot](./images/Covid-Website-Screenshot.png)
 
 ## Sources
 ---
