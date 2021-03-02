@@ -231,7 +231,6 @@ body {
   list-style-type: none;
   padding-top: 20px;
   color: white;
-
   text-align: center;
   }
   .footer a {
@@ -245,6 +244,9 @@ body {
     box-shadow: inset 10px 5px 25px 5px black, 5px 5px 12px 2px black;
   }
 
+  .ftlist li{
+    list-style-type:none;
+  }
   
  
 
