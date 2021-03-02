@@ -16,15 +16,14 @@ var recentStates = JSON.parse(localStorage.getItem('recentStates')) || [];
 
 //load recently pulled countries and states, as available, at the bottom of the page
 function loadRecentPulls(){
-  $("#rec-ctry-1").html(recentCountries[0].toUpperCase());
-  $("#rec-ctry-2").html(recentCountries[1].toUpperCase());
-  $("#rec-ctry-3").html(recentCountries[2].toUpperCase());
-  $("#rec-st-1").html(recentStates[0].toUpperCase());
-  $("#rec-st-2").html(recentStates[1].toUpperCase());
-  $("#rec-st-3").html(recentStates[2].toUpperCase());
+  if (recentCountries[0])$("#rec-ctry-1").html(recentCountries[0].toUpperCase());
+  if (recentCountries[1])$("#rec-ctry-2").html(recentCountries[1].toUpperCase());
+  if (recentCountries[2])$("#rec-ctry-3").html(recentCountries[2].toUpperCase());
+  if (recentStates[0])$("#rec-st-1").html(recentStates[0].toUpperCase());
+  if (recentStates[1])$("#rec-st-2").html(recentStates[1].toUpperCase());
+  if (recentStates[2])$("#rec-st-3").html(recentStates[2].toUpperCase());
 }
 
-//('li.select2-selection__choice').find('font').html('HELLO WORLD');
 $( document ).ready(function() {
 recentCountries = JSON.parse(localStorage.getItem("recentCountries")) || [];
 recentStates = JSON.parse(localStorage.getItem('recentStates')) || [];

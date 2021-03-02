@@ -284,7 +284,9 @@ body {
     }
   } 
   
- 
+ .ftlist li{
+  list-style: none;
+ }
 
   
   
